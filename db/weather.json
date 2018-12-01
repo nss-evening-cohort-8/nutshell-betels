@@ -1,0 +1,12 @@
+{
+  "weather1": {
+    "userUid": "12345",
+    "zipcode": 94598,
+    "isCurrent": true
+  },
+  "weather2": {
+    "userUid": "12345",
+    "zipcode": 37215,
+    "isCurrent": false
+  }
+}

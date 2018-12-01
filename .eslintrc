@@ -1,0 +1,22 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "extends": "airbnb-base",
+  "globals": {
+    "document": true,
+    "window": true,
+    "$": true,
+    "allowTemplateLiterals": true
+  },
+  "rules": {
+    "no-console": [
+      2,
+      {
+        "allow": ["error", "log"]
+      }
+    ],
+    "no-debugger": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "event1": {
+    "userUid": "12345",
+    "event": "Bonfire at the beach",
+    "startDate": 1528763298535,
+    "location": "Ocean Beach"
+  },
+  "event2": {
+    "userUid": "12345",
+    "event": "Nap",
+    "startDate": 1528763298536,
+    "location": "NSS"
+  }
+}
