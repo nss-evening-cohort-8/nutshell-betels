@@ -1,9 +1,7 @@
-import realNiceComponent from './components/RealNiceComponent/RealNiceComponent';
-
 import './index.scss';
 
-const initialize = () => {
-  realNiceComponent();
-};
+// const initialize = () => {
+//   realNiceComponent();
+// };
 
-initialize();
+// initialize();
