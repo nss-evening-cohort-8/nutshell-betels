@@ -2,10 +2,10 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import './authlscss';
+import './auth.scss';
 
 const loginButton = () => {
-  const domString = '<button class="btn btn-primary" id="google-auth"></button>';
+  const domString = '<button class="btn btn-primary" id="google-auth">Login</button>';
   $('#auth').html(domString);
   $('#google-auth').on('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();

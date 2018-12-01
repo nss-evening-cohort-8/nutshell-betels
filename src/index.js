@@ -4,6 +4,7 @@ import 'bootstrap';
 import apiKeys from '../db/apiKeys.json';
 
 import loginButton from './components/Auth/auth';
+import checkLoginStatus from './helpers/authHelpers';
 
 import './index.scss';
 
