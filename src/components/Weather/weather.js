@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'bootstrap';
 
 const weatherSection = () => {
   const domString = `
