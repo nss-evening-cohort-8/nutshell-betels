@@ -9,7 +9,8 @@ const weatherGetter = zipCode => new Promise((resolve, reject) => {
   axios.get(`${weatherbitUrl}?postal_code=${zipCode}&units=I&key=${weatherKey}`)
     .then((result) => {
       resolve(result);
-      console.log(result);
+      const infoObject = result.data.data[0];
+      console.log(infoObject);
     })
     .catch((error) => {
       reject(error);
