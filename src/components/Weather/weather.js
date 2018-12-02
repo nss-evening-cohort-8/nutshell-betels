@@ -15,9 +15,9 @@ const weatherSection = () => {
           Saved Locations
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Chicago</a>
+          <a class="dropdown-item" href="#">Houston</a>
+          <a class="dropdown-item" href="#">Los Angeles</a>
         </div>
       </div>
       <input id="zipCodeInputField" class="form-control mr-sm-2" type="enterZip" placeholder="Enter zip code" aria-label="Enter zip code">
