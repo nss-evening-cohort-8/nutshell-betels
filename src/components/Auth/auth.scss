@@ -1,0 +1,18 @@
+@import '~bootstrap/scss/bootstrap';
+
+#page-container{
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  .img-fluid{
+   height: 100vh;
+  }
+      
+    .login-box{
+      opacity: 0.8;
+      position: absolute;
+      top: 20%;
+      left: 25%;
+    }
+}

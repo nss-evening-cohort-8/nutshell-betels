@@ -5,13 +5,11 @@ import $ from 'jquery';
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      $('#auth').hide();
-      $('#nav').show();
-      $('#content-wrapper').show();
+      $('#page-container').fadeOut(1000);
+      $('#nav').fadeIn(1000);
     } else {
-      $('#auth').show();
-      $('#nav').hide();
-      $('#content-wrapper').hide();
+      $('#page-container').fadeIn(1000);
+      $('#nav').fadeOut(1000);
     }
   });
 };
