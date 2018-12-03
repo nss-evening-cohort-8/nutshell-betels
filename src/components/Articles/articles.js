@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import getArt from '../../helpers/data/articlesData';
 
-
 const formForTask = () => {
   const domString = `
   <div class="form-row">
@@ -18,11 +17,10 @@ const formForTask = () => {
 };
 
 const newArtFunction = () => {
-  $('#addArtButt').click($('aritlces-add-container-form').show());
-  // $('body').on('click', '#addArtButt', $('aritlces-add-container-form').show());
+  // $('#addArtButt').click($('#aritlces-add-container-form').show());
+  $('body').on('click', '#addArtButt', $('aritlces-add-container-form').show());
   // $('body').on('click', '#addArtButt2', () => { formForTask(); });
 };
-
 
 const printArt = (dataArray) => {
   let domString = '';
@@ -83,6 +81,5 @@ const printArtSecond = () => {
 // };
 
 // ABLOVE IS IN PROGRESS ;
-
 
 export default printArtSecond;
