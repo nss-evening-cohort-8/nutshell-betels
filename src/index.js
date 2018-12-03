@@ -9,6 +9,7 @@ import createNavbar from './components/Navbar/navbar';
 import zipCodeTest from './helpers/data/weatherData';
 import weatherSection from './components/Weather/weather';
 import printArt from './components/Articles/articles';
+import getMessages from './components/Messages/messages';
 
 import './index.scss';
 
@@ -18,6 +19,7 @@ const initialize = () => {
   checkLoginStatus2.checkLoginStatus();
   createNavbar();
   weatherSection();
+  getMessages();
   zipCodeTest();
   printArt();
 };
