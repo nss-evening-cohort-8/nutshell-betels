@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import apiKeys from '../../db/apiKeys.json';
+import apiKeys from '../../../db/apiKeys';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -10,11 +10,11 @@ const getArt = () => new Promise((resolve, reject) => {
     .then((result) => {
       const allArtObject = result.data;
       const allArtArray = [];
-      if (allTasksObject != null) {
-        Object.keys(allArtObject).forEach((taskId) => {
-          const newTask = allArtObject[taskId];
-          newTask.id = taskId;
-          allArtArray.push(newTask);
+      if (allArtObject != null) {
+        Object.keys(allArtObject).forEach((artId) => {
+          const newArt = allArtObject[artId];
+          newArt.id = artId;
+          allArtArray.push(newArt);
         });
       }
       resolve(allArtArray);
@@ -25,11 +25,7 @@ const getArt = () => new Promise((resolve, reject) => {
 });
 
 
-// const addNewAxios = randomName => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(randomName));
-
 // const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
-
-// const updateTask = (artObject, taskId) => axios.put(`${baseUrl}/tasks/${taskId}.json`, JSON.stringify(artObject));
 
 
 // export default {

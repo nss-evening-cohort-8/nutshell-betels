@@ -5,6 +5,7 @@ import getArt from '../../helpers/data/articlesData';
 const printArt = (dataArray) => {
   let domString = '';
   dataArray.forEach((data) => {
+    console.log(data);
     domString += `
     <div class="card" style="width: 18rem;">
   <img class="card-img-top" src=".../100px180/" alt="Card image cap">
@@ -21,10 +22,10 @@ const printArt = (dataArray) => {
   // the above prints the add form to dom
 };
 
-const printTaskSecond = () => {
+const printArtSecond = () => {
   getArt()
     .then((data) => {
-      printTask(data);
+      printArt(data);
     })
     .catch((error) => {
       console.error('error in getting one friend', error);
@@ -32,6 +33,4 @@ const printTaskSecond = () => {
 };
 
 
-
-
-
+export default printArtSecond;
