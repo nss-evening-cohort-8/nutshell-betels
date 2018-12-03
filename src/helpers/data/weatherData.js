@@ -1,7 +1,7 @@
 import axios from 'axios';
 import apiKeys from '../../../db/apiKeys.json';
 
-// const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
+// const baseUrl = apiKeys.firebaseKeys.databaseURL;
 const weatherbitUrl = apiKeys.weatherbitKeys.baseURL;
 const weatherKey = apiKeys.weatherbitKeys.apiKey;
 
