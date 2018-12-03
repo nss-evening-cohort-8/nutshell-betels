@@ -9,6 +9,7 @@ import createNavbar from './components/Navbar/navbar';
 import zipCodeTest from './helpers/data/weatherData';
 import weatherSection from './components/Weather/weather';
 import printArt from './components/Articles/articles';
+import eventsPage from './components/Events/events';
 
 import './index.scss';
 
@@ -20,6 +21,7 @@ const initialize = () => {
   weatherSection();
   zipCodeTest();
   printArt();
+  eventsPage();
 };
 
 initialize();

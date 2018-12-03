@@ -1,38 +1,31 @@
-import axios from 'axios';
+import $ from 'jquery';
+import getEvents from '../../helpers/data/eventsData';
+// import authHelpers from '../../helpers/authHelpers';
 
-import apiKeys from '../../../db/apiKeys';
-
-const baseUrl = apiKeys.firebaseKeys.databaseURL;
-
-const getEvents = () => new Promise((resolve, reject) => {
-  axios
-    .get(`${baseUrl}/events.json`)
-    .then((result) => {
-      const allEventsObject = result.data;
-      const allEventsArray = [];
-      if (allEventsObject != null) {
-        Object.keys(allEventsObject).forEach((eventId) => {
-          const newEvent = allEventsObject[eventId];
-          newEvent.id = eventId;
-          allEventsArray.push(newEvent);
-        });
-      }
-      resolve(allArtArray);
-    })
-    .catch((err) => {
-      reject(err);
-    });
-});
-
-const deleteEvent = eventId => axios.delete(`${baseUrl}/events/${eventId}.json`);
-
-const addNewEvent = allEventsObject => axios.post(`${baseUrl}/events.json`, JSON.stringify(allEventsObject));
-
-const updateEvent = (allEventsObject, eventId) => axios.put(`${baseUrl}/events/${eventId}.json`, JSON.stringify(allEventsObject));
-
-export default {
-  getEvents,
-  deleteEvent,
-  addNewEvent,
-  updateEvent,
+const printEvent = (eventsArray) => {
+  let domString = '';
+  eventsArray.forEach((event) => {
+    domString += `
+      <div>
+        <h1>${event.event}</h1>
+        <h3>${event.startDate}</h3>
+        <p>${event.location}</p>
+        <button class='btn btn-danger delete-btn' data-delete-id=${event.id}>Delete</button>
+        <button class='btn btn-info edit-btn' data-edit-id=${event.id}>Edit</button>
+      </div>`;
+    $('#events').html(domString);
+  });
 };
+
+const eventsPage = () => {
+  // const uid = authHelpers.getCurrentUid();
+  getEvents.getEvents()
+    .then((eventsArray) => {
+      printEvent(eventsArray);
+    })
+    .catch((error) => {
+      console.error('error in getting events', error);
+    });
+};
+
+export default eventsPage;
