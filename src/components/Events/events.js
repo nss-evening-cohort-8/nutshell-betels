@@ -24,15 +24,15 @@ const getEvents = () => new Promise((resolve, reject) => {
     });
 });
 
-
 const deleteEvent = eventId => axios.delete(`${baseUrl}/events/${eventId}.json`);
 
+const addNewEvent = allEventsObject => axios.post(`${baseUrl}/events.json`, JSON.stringify(allEventsObject));
 
-// export default {
-//   getArt,
-//   addNewAxios,
-//   deleteTask,
-//   updateTask,
-//   getSingleTask,
-// };
-export default getArt;
+const updateEvent = (allEventsObject, eventId) => axios.put(`${baseUrl}/events/${eventId}.json`, JSON.stringify(allEventsObject));
+
+export default {
+  getEvents,
+  deleteEvent,
+  addNewEvent,
+  updateEvent,
+};
