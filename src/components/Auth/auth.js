@@ -1,11 +1,27 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import googleImage from '../../img/sign-in-with-google.png';
+import backgroundImage from '../../img/home-bg.jpeg';
 
 import './auth.scss';
 
 const loginButton = () => {
-  const domString = '<button class="btn btn-primary" id="google-auth">Login</button>';
+  const domString = `
+  <div id="page-container" class="text-center">
+  <img class="img-fluid" src="${backgroundImage}" alt="background Image"><img>
+
+      <div class="login-box card shadow rounded">
+        <div class="card-header bg-transparent display-4 text-center">Welcome To Betels Group
+        </div>
+        <div class="card-body text-info">
+          <a href="#" id="google-auth"><img src="${googleImage}" style="max-width: 20rem;" ></a>
+        </div>
+      </div>
+  </div>
+`;
+
+
   $('#auth').html(domString);
   $('#google-auth').on('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
