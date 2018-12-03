@@ -7,14 +7,16 @@ const printEvents = (eventsArray) => {
   let domString = '';
   eventsArray.forEach((event) => {
     domString += `
-      <div>
-        <h1>${event.event}</h1>
-        <h3>${event.startDate}</h3>
-        <p>${event.location}</p>
-        <button class='btn btn-danger delete-btn' data-delete-id=${event.id}>Delete</button>
-        <button class='btn btn-info edit-btn' data-edit-id=${event.id}>Edit</button>
+      <div class="card" style="width: 40rem;">
+        <div class="card-body">
+          <h5 class="card-title">${event.event}</h5>
+          <h3>${event.startDate}</h3>
+          <p class="card-text">${event.location}</p>
+          <button class='btn btn-danger delete-btn' data-delete-id=${event.id}>Delete</button>
+          <button class='btn btn-info edit-btn' data-edit-id=${event.id}>Edit</button>
+        </div>
       </div>`;
-    $('#events').html(domString);
+    $('#events-container').html(domString);
   });
 };
 
