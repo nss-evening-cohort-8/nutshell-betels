@@ -1,8 +1,9 @@
-import $ from 'jquery';
-import getEvents from '../../helpers/data/eventsData';
-// import authHelpers from '../../helpers/authHelpers';
+/* eslint-disable import/no-cycle */
 
-const printEvent = (eventsArray) => {
+import $ from 'jquery';
+import events from '../../helpers/data/eventsData';
+
+const printEvents = (eventsArray) => {
   let domString = '';
   eventsArray.forEach((event) => {
     domString += `
@@ -17,15 +18,15 @@ const printEvent = (eventsArray) => {
   });
 };
 
-const eventsPage = () => {
+const loadEvents = () => {
   // const uid = authHelpers.getCurrentUid();
-  getEvents.getEvents()
+  events.getEvents()
     .then((eventsArray) => {
-      printEvent(eventsArray);
+      printEvents(eventsArray);
     })
     .catch((error) => {
       console.error('error in getting events', error);
     });
 };
 
-export default eventsPage;
+export default loadEvents;

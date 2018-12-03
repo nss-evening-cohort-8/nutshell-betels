@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
-
+import eventStuff from '../../components/Events/events';
 import apiKeys from '../../../db/apiKeys';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
@@ -24,6 +25,16 @@ const getEvents = () => new Promise((resolve, reject) => {
     });
 });
 
+const printSingleEvent = () => {
+  getEvents()
+    .then((data) => {
+      eventStuff.printEvents(data);
+    })
+    .catch((error) => {
+      console.error('error in getting one friend', error);
+    });
+};
+
 const deleteEvent = eventId => axios.delete(`${baseUrl}/events/${eventId}.json`);
 
 const addNewEvent = allEventsObject => axios.post(`${baseUrl}/events.json`, JSON.stringify(allEventsObject));
@@ -35,4 +46,5 @@ export default {
   deleteEvent,
   addNewEvent,
   updateEvent,
+  printSingleEvent,
 };
