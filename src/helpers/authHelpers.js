@@ -7,11 +7,13 @@ const getCurrentUid = () => firebase.auth().currentUser.uid;
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      $('#page-container').fadeOut(1000);
+      $('#auth').fadeOut(1000);
       $('#nav').fadeIn(1000);
+      $('#content-wrapper').fadeIn(1000);
     } else {
-      $('#page-container').fadeIn(1000);
+      $('#auth').fadeIn(1000);
       $('#nav').fadeOut(1000);
+      $('#content-wrapper').fadeOut(1000);
     }
   });
 };
