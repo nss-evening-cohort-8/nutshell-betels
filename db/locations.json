@@ -1,81 +1,81 @@
 {
   "location1": {
-    "userUid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
+    "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 77001,
     "isCurrent": true
   },
   "location2": {
-    "userUid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
+    "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 77001,
     "isCurrent": true
   },
   "location3": {
-    "userUid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
+    "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 77001,
     "isCurrent": true
 },
   "location4": {
-    "userUid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
+    "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 77001,
     "isCurrent": true
 },
   "location5": {
-    "userUid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
+    "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 37011,
     "isCurrent": false
   },
   "location6": {
-    "userUid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
+    "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 37011,
     "isCurrent": false
   },
   "location7": {
-    "userUid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
+    "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 37011,
     "isCurrent": false
 },
   "location8": {
-    "userUid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
+    "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 37011,
     "isCurrent": false
 },
   "location9": {
-    "userUid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
+    "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 60007,
     "isCurrent": false
   },
   "location10": {
-    "userUid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
+    "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 60007,
     "isCurrent": false
   },
   "location11": {
-    "userUid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
+    "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 60007,
     "isCurrent": false
 },
   "location12": {
-    "userUid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
+    "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 60007,
     "isCurrent": false
 },
   "location13": {
-    "userUid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
+    "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 90001,
     "isCurrent": false
   },
   "location14": {
-    "userUid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
+    "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 90001,
     "isCurrent": false
   },
   "location15": {
-    "userUid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
+    "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 90001,
     "isCurrent": false
 },
   "location16": {
-    "userUid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
+    "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 90001,
     "isCurrent": false
 }

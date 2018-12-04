@@ -20,7 +20,6 @@ const loginButton = () => {
   </div>
 `;
 
-
   $('#auth').html(domString);
   $('#google-auth').on('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();

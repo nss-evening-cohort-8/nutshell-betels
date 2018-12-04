@@ -4,10 +4,10 @@ import apiKeys from '../../../db/apiKeys.json';
 const weatherbitUrl = apiKeys.weatherbitKeys.baseURL;
 const weatherKey = apiKeys.weatherbitKeys.apiKey;
 
-const weatherGetter = zipCode => new Promise((resolve, reject) => {
-  axios.get(`${weatherbitUrl}?postal_code=${zipCode}&units=I&key=${weatherKey}`)
+const weatherGetter = zipcode => new Promise((resolve, reject) => {
+  axios.get(`${weatherbitUrl}?postal_code=${zipcode}&units=I&key=${weatherKey}`)
     .then((result) => {
-      resolve(result.data.data[0]);
+      resolve(result.data.data);
     })
     .catch((error) => {
       reject(error);

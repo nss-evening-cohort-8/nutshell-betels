@@ -13,15 +13,18 @@ import getMessages from './components/Messages/messages';
 
 import './index.scss';
 
-const initialize = () => {
+const initializeData = () => {
+  weatherStuff.initializeWeather();
+};
+
+const initializeApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   loginButton();
-  checkLoginStatus2.checkLoginStatus();
+  checkLoginStatus2.checkLoginStatus(initializeData);
   createNavbar();
-  weatherStuff.initializeWeather();
   getMessages();
   printArt();
   loadEvents();
 };
 
-initialize();
+initializeApp();

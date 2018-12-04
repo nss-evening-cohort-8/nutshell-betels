@@ -7,16 +7,16 @@ const getCurrentLocation = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/locations.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
       const locationsObject = results.data;
-      const locationsArray = [];
+      const currentLocationsArray = [];
       if (locationsObject !== null) {
         Object.keys(locationsObject).forEach((locationId) => {
           locationsObject[locationId].id = locationId;
-          locationsArray.push(locationsObject[locationId]);
+          currentLocationsArray.push(locationsObject[locationId]);
         });
       }
-      locationsArray.forEach((location) => {
+      currentLocationsArray.forEach((location) => {
         if (location.isCurrent === true) {
-          resolve(locationsArray);
+          resolve(location);
         }
       });
     })

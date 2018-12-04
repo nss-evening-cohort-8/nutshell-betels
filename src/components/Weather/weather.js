@@ -5,19 +5,19 @@ import authHelpers from '../../helpers/authHelpers';
 import locationsData from '../../helpers/data/locationsData';
 import weatherData from '../../helpers/data/weatherData';
 
-const weatherSection = () => {
+const weatherSection = (currentLocation) => {
   const domString = `
   <div class="card" id="weatherCard" style="width: 25rem;">
     <div class="card-body d-inline-flex justify-content-between">
       <div class="section">
-        <h4 class="card-title city-state" id="wea-city"></h4>
-        <h5 class="card-subtitle mb-2 text-muted weather-desc" id="wea-desc"></h5>
+        <h4 class="card-title city-state" id="wea-city">${currentLocation[0].city_name}, ${currentLocation[0].state_code}</h4>
+        <h5 class="card-subtitle mb-2 text-muted" id="wea-desc">${currentLocation[0].weather.description}</h5>
         <div class="d-inline-flex justify-content-between align-items-center">
-          <img class="card-img weather-icon" id="wea-img"></img>
-          <h4 class="card-title" id="wea-temp"></h4>
+          <img src="https://www.weatherbit.io/static/img/icons/${currentLocation[0].weather.icon}.png" class="card-img weather-icon" id="wea-img"/>
+          <h4 class="card-title" id="wea-temp">${currentLocation[0].temp}°F</h4>
         </div>
-        <p class="card-text" id="wea-perc"></p>
-        <p class="card-text" id="wea-wind"></p>
+        <p class="card-text" id="wea-perc">${currentLocation[0].precip}</p>
+        <p class="card-text" id="wea-wind">${currentLocation[0].wind_spd} mph</p>
       </div>
       <div class="section">
         <div class="dropdown">
@@ -41,33 +41,23 @@ const weatherSection = () => {
   $('#weather').html(domString);
 };
 
-const printTheWeather = (infoObject) => {
-  $('#wea-city').html(infoObject.city_name);
-  $('#wea-desc').html(infoObject.weather.description);
-  $('#wea-img').add.src='../../img/icons/{icon_code}';
-  $('#wea-temp').html(infoObject.temp);
-  $('#wea-perc').html(infoObject.precip);
-  $('#wea-wind').html(infoObject.wind_spd);
-};
-
 const weatherPage = () => {
   const uid = authHelpers.getCurrentUid();
   locationsData.getCurrentLocation(uid)
-    .then(locationsArray => weatherData.weatherGetter(locationsArray.zipcode))
-    .then((locationsArray) => {
-      printTheWeather(locationsArray);
+    .then(currentLocation => weatherData.weatherGetter(currentLocation.zipcode))
+    .then((currentLocation) => {
+      weatherSection(currentLocation);
     })
     .catch((error) => {
-      console.error('error in getting friends', error);
+      console.error('error in getting location', error);
     });
 };
 
 const initializeWeather = () => {
-  weatherSection();
   weatherPage();
 };
 
 export default {
   initializeWeather,
-  weatherPage,
+  weatherSection,
 };
