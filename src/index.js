@@ -23,7 +23,7 @@ const initialize = () => {
   getMessages();
   zipCodeTest();
   printArt();
-  loadEvents();
+  loadEvents.initializeEventsPage();
 };
 
 initialize();
