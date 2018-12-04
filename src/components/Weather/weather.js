@@ -1,20 +1,23 @@
 import $ from 'jquery';
 import 'bootstrap';
 
-const weatherSection = () => {
+import authHelpers from '../../helpers/authHelpers';
+import locationsData from '../../helpers/data/locationsData';
+import weatherData from '../../helpers/data/weatherData';
+
+const weatherSection = (currentLocation) => {
   const domString = `
   <div class="card" id="weatherCard" style="width: 25rem;">
     <div class="card-body d-inline-flex justify-content-between">
       <div class="section">
-        <h4 class="card-title city-state">Nashville, TN</h4>
-        <h5 class="card-subtitle mb-2 text-muted weather-desc">Sunny</h5>
+        <h4 class="card-title city-state" id="wea-city">${currentLocation[0].city_name}, ${currentLocation[0].state_code}</h4>
+        <h5 class="card-subtitle mb-2 text-muted" id="wea-desc">${currentLocation[0].weather.description}</h5>
         <div class="d-inline-flex justify-content-between align-items-center">
-          <img class="card-img weather-icon" src="https://www.weatherbit.io/static/img/icons/c01d.png"></img>
-          <h4 class="card-title">67°F</h4>
+          <img src="https://www.weatherbit.io/static/img/icons/${currentLocation[0].weather.icon}.png" class="card-img weather-icon" id="wea-img"/>
+          <h4 class="card-title" id="wea-temp">${currentLocation[0].temp}°F</h4>
         </div>
-        <p class="card-text">Percipitation: 0%</p>
-        <p class="card-text">Humidity: 39%</p>
-        <p class="card-text">Wind: 17 mph</p>
+        <p class="card-text" id="wea-perc">${currentLocation[0].precip}</p>
+        <p class="card-text" id="wea-wind">${currentLocation[0].wind_spd} mph</p>
       </div>
       <div class="section">
         <div class="dropdown">
@@ -38,4 +41,23 @@ const weatherSection = () => {
   $('#weather').html(domString);
 };
 
-export default weatherSection;
+const weatherPage = () => {
+  const uid = authHelpers.getCurrentUid();
+  locationsData.getCurrentLocation(uid)
+    .then(currentLocation => weatherData.weatherGetter(currentLocation.zipcode))
+    .then((currentLocation) => {
+      weatherSection(currentLocation);
+    })
+    .catch((error) => {
+      console.error('error in getting location', error);
+    });
+};
+
+const initializeWeather = () => {
+  weatherPage();
+};
+
+export default {
+  initializeWeather,
+  weatherSection,
+};
