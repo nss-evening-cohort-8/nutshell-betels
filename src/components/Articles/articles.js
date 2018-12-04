@@ -1,26 +1,21 @@
 import $ from 'jquery';
-import getArt from '../../helpers/data/articlesData';
+import articlesData from '../../helpers/data/articlesData';
+import getCurrentUid2 from '../../helpers/authHelpers';
 
 const formForTask = () => {
   const domString = `
   <div class="form-row">
   <div class="form-group">
-    <input type="text" class="form-control" id="form-article-synopsis" placeholder="Discription">
-    <input type="text" class="form-control" id="form-article-title" placeholder="Title">
-    <input type="text" class="form-control" id="form-article-url" placeholder="URL"> 
-    <button id="addButtons" class="btn btn-primary">Add Task</button>
+    <input id="synopsisId" type="text" class="form-control" id="form-article-synopsis" placeholder="Discription">
+    <input id="titleId" type="text" class="form-control" id="form-article-title" placeholder="Title">
+    <input id="urlId" type="text" class="form-control" id="form-article-url" placeholder="URL"> 
+    <button id="addButtons" class="btn btn-primary">Add Article</button>
   </div>
   </div>
   `;
   $('#aritlces-add-container-form').html(domString);
   return domString;
 };
-
-// const newArtFunction = () => {
-//   // $('#addArtButt').click($('#aritlces-add-container-form').show());
-//   // $('body').on('click', '#addArtButt', $('#aritlces-add-container-form').show());
-//   // $('body').on('click', '#addArtButt2', () => { formForTask(); });
-// };
 
 const printArt = (dataArray) => {
   let domString = '';
@@ -39,11 +34,10 @@ const printArt = (dataArray) => {
     `;
   });
   $('#articles-container').html(domString);
-  console.log('something here to print');
 };
 
 const printArtSecond = () => {
-  getArt()
+  articlesData.getArt()
     .then((data) => {
       printArt(data);
     })
@@ -53,7 +47,7 @@ const printArtSecond = () => {
 };
 
 const printArtSecond2 = () => {
-  getArt()
+  articlesData.getArt()
     .then((data) => {
       $('#aritlces-add-container-form').hide();
       printArt(data);
@@ -63,34 +57,34 @@ const printArtSecond2 = () => {
     });
 };
 
+const artFromForm2 = () => {
+  const taskFromForm = {
+    synopsis: $('#synopsisId').val(),
+    title: $('#titleId').val(),
+    url: $('#urlId').val(),
+    userUid: getCurrentUid2.getCurrentUid(),
+  };
+  return taskFromForm;
+};
 
-// BELOW IS IN PROGRESS ;
+const addNewTask = () => {
+  const newTask = artFromForm2();
+  articlesData.addNewAxios(newTask)
+    .then(() => {
+      console.log('DataBase is updated?', newTask);
+      printArtSecond2();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
 
-
-// const artFromForm2 = () => {
-//   const taskFromForm = {
-//     id: $('#form-task-id').val(),
-//     isCompleted: $('#form-task-complete').val(),
-//     task: $('#form-task-name').val(),
-//   };
-//   return taskFromForm;
-// };
-
-// const addNewTask = () => {
-//   const newTask = artFromForm2();
-//   fromGetter.addNewAxios(newTask)
-//     .then(() => {
-//       console.log('DataBase is updated?', newTask);
-//       printTaskSecond2.printTaskSecond();
-//       // domTasks2.domTasks();
-//     })
-//     .catch((error) => {
-//       console.error('error', error);
-//     });
-// };
+const eventBinders = () => {
+  addNewTask();
+  printArtSecond2();
+};
 
 $('body').on('click', '#addArtButt', () => { formForTask(); });
-$('body').on('click', '#addButtons', () => { printArtSecond2(); });
-// ABLOVE IS IN PROGRESS ;
+$('body').on('click', '#addButtons', () => { eventBinders(); });
 
 export default printArtSecond;
