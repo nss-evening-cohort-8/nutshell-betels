@@ -8,13 +8,11 @@ const navbarEvents = () => {
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#nav').fadeOut(1000);
-        $('#page-container').fadeIn(1000);
+        $('#auth').fadeIn(1000);
+        $('#content-wrapper').fadeOut(1000);
       }).catch((err) => {
         console.log('You are stil logged in', err);
       });
-    } else {
-      $('#nav').fadeOut(1000);
-      $('#page-container').fadeIn(1000);
     }
   });
 };
@@ -30,9 +28,6 @@ const createNavbar = () => {
     <div class="nav-item float-left mx-3" id="auth"></div>
     
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a id="navbar-button-auth" class="nav-link" href="#">Authentication</a>
-        </li>
         <li class="nav-item">
           <a id="navbar-button-logout" class="nav-link" href="#">Logout</a>
         </li>
