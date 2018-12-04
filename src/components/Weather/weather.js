@@ -1,20 +1,23 @@
 import $ from 'jquery';
 import 'bootstrap';
 
+import authHelpers from '../../helpers/authHelpers';
+import locationsData from '../../helpers/data/locationsData';
+import weatherData from '../../helpers/data/weatherData';
+
 const weatherSection = () => {
   const domString = `
   <div class="card" id="weatherCard" style="width: 25rem;">
     <div class="card-body d-inline-flex justify-content-between">
       <div class="section">
-        <h4 class="card-title city-state">Nashville, TN</h4>
-        <h5 class="card-subtitle mb-2 text-muted weather-desc">Sunny</h5>
+        <h4 class="card-title city-state" id="wea-city"></h4>
+        <h5 class="card-subtitle mb-2 text-muted weather-desc" id="wea-desc"></h5>
         <div class="d-inline-flex justify-content-between align-items-center">
-          <img class="card-img weather-icon" src="https://www.weatherbit.io/static/img/icons/c01d.png"></img>
-          <h4 class="card-title">67°F</h4>
+          <img class="card-img weather-icon" id="wea-img"></img>
+          <h4 class="card-title" id="wea-temp"></h4>
         </div>
-        <p class="card-text">Percipitation: 0%</p>
-        <p class="card-text">Humidity: 39%</p>
-        <p class="card-text">Wind: 17 mph</p>
+        <p class="card-text" id="wea-perc"></p>
+        <p class="card-text" id="wea-wind"></p>
       </div>
       <div class="section">
         <div class="dropdown">
@@ -38,4 +41,38 @@ const weatherSection = () => {
   $('#weather').html(domString);
 };
 
-export default weatherSection;
+const printTheWeather = (locationsArray) => {
+  $('#wea-city').html(infoObject.city_name);
+  $('#wea-desc').html(infoObject.weather.description);
+  $('#wea-img').add.src='../../img/icons/{icon_code}';
+  $('#wea-temp').html(infoObject.temp);
+  $('#wea-perc').html(infoObject.precip);
+  $('#wea-wind').html(infoObject.wind_spd);
+  });
+};
+
+const weatherPage = () => {
+  const uid = authHelpers.getCurrentUid();
+  locationsData.getCurrentLocation(uid)
+    .then(locationsArray => weatherData.weatherGetter(locationsArray.zipcode))
+    .then((locationsArray) => {
+      printTheWeather(locationsArray);
+    })
+    .catch((error) => {
+      console.error('error in getting friends', error);
+    });
+};
+
+const printWeatherFromLocation = (infoObject) => {
+  
+};
+
+const initializeWeather = () => {
+  weatherSection();
+  weatherPage();
+};
+
+export default {
+  initializeWeather,
+  weatherPage,
+};
