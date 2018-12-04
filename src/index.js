@@ -24,7 +24,7 @@ const initializeApp = () => {
   createNavbar();
   getMessages();
   printArt();
-  loadEvents();
+  loadEvents.initializeEventsPage();
 };
 
 initializeApp();
