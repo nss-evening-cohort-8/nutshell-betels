@@ -8,9 +8,8 @@ import './auth.scss';
 
 const loginButton = () => {
   const domString = `
-  <div id="page-container" class="text-center">
-  <img class="img-fluid" src="${backgroundImage}" alt="background Image"><img>
-
+  <div class="page-container" class="text-center">
+  <img class="bg-img" src="${backgroundImage}" alt="background-Image" />
       <div class="login-box card shadow rounded">
         <div class="card-header bg-transparent display-4 text-center">Welcome To Betels Group
         </div>
