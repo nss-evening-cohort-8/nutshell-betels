@@ -16,11 +16,11 @@ const formForTask = () => {
   return domString;
 };
 
-const newArtFunction = () => {
-  // $('#addArtButt').click($('#aritlces-add-container-form').show());
-  $('body').on('click', '#addArtButt', $('aritlces-add-container-form').show());
-  // $('body').on('click', '#addArtButt2', () => { formForTask(); });
-};
+// const newArtFunction = () => {
+//   // $('#addArtButt').click($('#aritlces-add-container-form').show());
+//   // $('body').on('click', '#addArtButt', $('#aritlces-add-container-form').show());
+//   // $('body').on('click', '#addArtButt2', () => { formForTask(); });
+// };
 
 const printArt = (dataArray) => {
   let domString = '';
@@ -39,21 +39,30 @@ const printArt = (dataArray) => {
     `;
   });
   $('#articles-container').html(domString);
-  formForTask();
-  // $('#addBut').html(formForTask2.formForTask());
-  // the above prints the add form to dom
+  console.log('something here to print');
 };
 
 const printArtSecond = () => {
   getArt()
     .then((data) => {
       printArt(data);
-      newArtFunction();
     })
     .catch((error) => {
       console.error('error in getting one friend', error);
     });
 };
+
+const printArtSecond2 = () => {
+  getArt()
+    .then((data) => {
+      $('#aritlces-add-container-form').hide();
+      printArt(data);
+    })
+    .catch((error) => {
+      console.error('error in getting one friend', error);
+    });
+};
+
 
 // BELOW IS IN PROGRESS ;
 
@@ -80,6 +89,8 @@ const printArtSecond = () => {
 //     });
 // };
 
+$('body').on('click', '#addArtButt', () => { formForTask(); });
+$('body').on('click', '#addButtons', () => { printArtSecond2(); });
 // ABLOVE IS IN PROGRESS ;
 
 export default printArtSecond;
