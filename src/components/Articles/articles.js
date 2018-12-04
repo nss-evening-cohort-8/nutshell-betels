@@ -22,13 +22,13 @@ const printArt = (dataArray) => {
   dataArray.forEach((data) => {
     console.log(data);
     domString += `
-    <div class="card" style="width: 40rem;">
+    <div id="${data.id}" class="card cardStartDiv" style="width: 40rem;">
   <div class="card-body">
     <h5 class="card-title">${data.title}</h5>
     <p class="card-text">${data.synopsis}</p>
     <a href="${data.url}" class="btn btn-primary">Go somewhere</a>
-    <button type="button" class="btn btn-secondary">Edit</button>
-    <button type="button" class="btn btn-danger">X</button>
+    <button id="editArtBut"type="button" class="btn btn-secondary">Edit</button>
+    <button id="delArtBut" type="button" class="btn btn-danger">X</button>
   </div>
 </div>
     `;
@@ -79,6 +79,18 @@ const addNewTask = () => {
     });
 };
 
+const deleteArt = (idToDelete) => {
+  articlesData.deleteArt(idToDelete)
+    .then(() => {
+      console.log('Delete button is wokring');
+      printArtSecond2();
+      // domTasks2.domTasks();
+    })
+    .catch((error) => {
+      console.error('error in deleting task', error);
+    });
+};
+
 const eventBinder2 = () => {
   $('#aritlces-add-container-form').show();
   formForTask();
@@ -91,5 +103,6 @@ const eventBinders = () => {
 
 $('body').on('click', '#addArtButt', () => { eventBinder2(); });
 $('body').on('click', '#addButtons', () => { eventBinders(); });
+$('body').on('click', '#delArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; deleteArt(idNeeded2); });
 
 export default printArtSecond;

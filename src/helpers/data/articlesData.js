@@ -25,7 +25,7 @@ const getArt = () => new Promise((resolve, reject) => {
 });
 
 const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stringify(newEntry));
-
+const deleteArt = taskId => axios.delete(`${baseUrl}/articles/${taskId}.json`);
 // const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
 
 // export default {
@@ -35,4 +35,4 @@ const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stri
 //   updateTask,
 //   getSingleTask,
 // };
-export default { getArt, addNewAxios };
+export default { getArt, addNewAxios, deleteArt };
