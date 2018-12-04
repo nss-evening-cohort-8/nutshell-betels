@@ -25,6 +25,18 @@ const getEvents = () => new Promise((resolve, reject) => {
     });
 });
 
+const getSingleEvent = eventId => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/events/${eventId}.json`)
+    .then((result) => {
+      const singleEvent = result.data;
+      singleEvent.id = eventId;
+      resolve(singleEvent);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
 const printSingleEvent = () => {
   getEvents()
     .then((data) => {
@@ -47,4 +59,5 @@ export default {
   addNewEvent,
   updateEvent,
   printSingleEvent,
+  getSingleEvent,
 };
