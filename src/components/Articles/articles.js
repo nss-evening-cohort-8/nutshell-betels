@@ -79,12 +79,17 @@ const addNewTask = () => {
     });
 };
 
-const eventBinders = () => {
-  addNewTask();
-  printArtSecond2();
+const eventBinder2 = () => {
+  $('#aritlces-add-container-form').show();
+  formForTask();
 };
 
-$('body').on('click', '#addArtButt', () => { formForTask(); });
+const eventBinders = () => {
+  addNewTask();
+  printArtSecond();
+};
+
+$('body').on('click', '#addArtButt', () => { eventBinder2(); });
 $('body').on('click', '#addButtons', () => { eventBinders(); });
 
 export default printArtSecond;
