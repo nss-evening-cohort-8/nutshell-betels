@@ -41,14 +41,13 @@ const weatherSection = () => {
   $('#weather').html(domString);
 };
 
-const printTheWeather = (locationsArray) => {
+const printTheWeather = (infoObject) => {
   $('#wea-city').html(infoObject.city_name);
   $('#wea-desc').html(infoObject.weather.description);
   $('#wea-img').add.src='../../img/icons/{icon_code}';
   $('#wea-temp').html(infoObject.temp);
   $('#wea-perc').html(infoObject.precip);
   $('#wea-wind').html(infoObject.wind_spd);
-  });
 };
 
 const weatherPage = () => {
@@ -61,10 +60,6 @@ const weatherPage = () => {
     .catch((error) => {
       console.error('error in getting friends', error);
     });
-};
-
-const printWeatherFromLocation = (infoObject) => {
-  
 };
 
 const initializeWeather = () => {
