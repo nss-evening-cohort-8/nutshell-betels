@@ -28,7 +28,6 @@ const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stri
 
 // const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
 
-
 // export default {
 //   getArt,
 //   addNewAxios,
