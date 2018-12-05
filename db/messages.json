@@ -1,13 +1,29 @@
 {
   "message1": {
-    "userUid": "12345",
+    "userName": "Wayne",
+    "userUid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "message": "What's up?",
     "timestamp": 1528763298535,
     "isEdited": false
   },
   "message2": {
-    "userUid": "67890",
-    "message": "The Sky",
+    "userName": "Marshall",
+    "userUid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
+    "message": "Everything's fine",
+    "timestamp": 1528763298536,
+    "isEdited": true
+  },
+  "message3": {
+    "userName": "Mohammad",
+    "userUid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
+    "message": "Hello everyone",
+    "timestamp": 1528763298536,
+    "isEdited": true
+  },
+  "message4": {
+    "userName": "Chase",
+    "userUid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
+    "message": "How are you doing?",
     "timestamp": 1528763298536,
     "isEdited": true
   }
