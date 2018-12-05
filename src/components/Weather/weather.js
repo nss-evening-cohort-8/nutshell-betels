@@ -32,9 +32,11 @@ const weatherSection = (currentLocation) => {
 
       </div>
     </div>
+      <p>Enter zipcode and city to add a new location</p>
       <div class="card-body d-inline-flex justify-content-between">
         <input id="zipCodeInputField" class="form-control mr-sm-2" type="enterZip" placeholder="Enter zip code" aria-label="Enter zip code">
-        <button class="btn btn-primary">Add location</button>
+        <input id="cityInputField" class="form-control mr-sm-2" type="enterCity" placeholder="Enter city name" aria-label="Enter city">
+        <button class="btn btn-primary add-location">Add location</button>
       </div>
   </div>
   `;
