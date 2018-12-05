@@ -8,8 +8,8 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const formForTask = () => {
   const domString = `
-  <div class="form-row">
-  <div class="form-group">
+  <div class="form-row mx-auto" style="width: 40rem">
+  <div class="form-group" style="width: 40rem">
     <input id="synopsisId" type="text" class="form-control" id="form-article-synopsis" placeholder="Discription">
     <input id="titleId" type="text" class="form-control" id="form-article-title" placeholder="Title">
     <input id="urlId" type="text" class="form-control" id="form-article-url" placeholder="URL"> 
@@ -112,8 +112,8 @@ const getSingleArt = artId => new Promise((resolve, reject) => {
 
 const formForTask2 = (art) => {
   const domString = `
-  <div class="form-row">
-  <div class="form-group">
+  <div class="form-row mx-auto" style="width: 40rem">
+  <div class="form-group" style="width: 40rem">
     <input id="synopsisId" type="text" class="form-control" value="${art.synopsis}" id="form-article-synopsis" placeholder="Discription">
     <input id="titleId" type="text" class="form-control" value="${art.title}" id="form-article-title" placeholder="Title">
     <input id="urlId" type="text" class="form-control" value="${art.url}" id="form-article-url" placeholder="URL"> 
