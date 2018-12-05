@@ -25,9 +25,8 @@ const getArt = () => new Promise((resolve, reject) => {
 });
 
 const stockApi = () => new Promise((resolve, reject) => {
-  axios.get('https://api.iextrading.com/1.0/stock/aapl/batch?types=quote,news,chart&range=1m&last=10')
+  axios.get('https://api.iextrading.com/1.0/stock/market/batch?symbols=aapl,fb,tsla&types=quote,news,chart&range=1m&last=5')
     .then((result) => {
-      console.log(result.data);
       resolve(result.data);
     })
     .catch((error) => {
@@ -35,6 +34,7 @@ const stockApi = () => new Promise((resolve, reject) => {
     });
 });
 stockApi();
+
 const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stringify(newEntry));
 const deleteArt = artId => axios.delete(`${baseUrl}/articles/${artId}.json`);
 const updateArt = (friendsObject, artId) => axios.put(`${baseUrl}/articles/${artId}.json`, JSON.stringify(friendsObject));

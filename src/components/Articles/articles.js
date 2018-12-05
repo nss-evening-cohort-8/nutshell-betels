@@ -166,4 +166,17 @@ $('body').on('click', '#addCancelButtons2', () => { eventBinders3(); });
 $('body').on('click', '#delArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; deleteArt(idNeeded2); });
 $('body').on('click', '#editArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; editArt(idNeeded2); });
 $('body').on('click', '#addButtons2', () => { const idNeeded = $('#addButtons2').data('single-edit-id'); updateArt(idNeeded); });
+
+const getStockApi = () => {
+  articlesData.stockApi()
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('error in getting location', error);
+    });
+};
+
+getStockApi();
+
 export default printArtSecond;
