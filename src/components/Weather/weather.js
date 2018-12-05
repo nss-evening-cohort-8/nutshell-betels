@@ -1,9 +1,9 @@
 import $ from 'jquery';
-import 'bootstrap';
 
 import authHelpers from '../../helpers/authHelpers';
 import locationsData from '../../helpers/data/locationsData';
 import weatherData from '../../helpers/data/weatherData';
+import getLocationsForDropdown from './dropdown';
 
 const weatherSection = (currentLocation) => {
   const domString = `
@@ -16,20 +16,19 @@ const weatherSection = (currentLocation) => {
           <img src="https://www.weatherbit.io/static/img/icons/${currentLocation[0].weather.icon}.png" class="card-img weather-icon" id="wea-img"/>
           <h4 class="card-title" id="wea-temp">${currentLocation[0].temp}°F</h4>
         </div>
-        <p class="card-text" id="wea-perc">${currentLocation[0].precip}</p>
-        <p class="card-text" id="wea-wind">${currentLocation[0].wind_spd} mph</p>
+        <p class="card-text" id="wea-wind">Wind speed: ${currentLocation[0].wind_spd} mph</p>
+        <p class="card-text" id="wea-hum">Relative humidity: ${currentLocation[0].rh} %</p>
       </div>
       <div class="section">
+
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="locationsDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Saved Locations
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Chicago</a>
-            <a class="dropdown-item" href="#">Houston</a>
-            <a class="dropdown-item" href="#">Los Angeles</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="locationsChoices">
           </div>
         </div>
+
       </div>
     </div>
       <div class="card-body d-inline-flex justify-content-between">
@@ -39,6 +38,7 @@ const weatherSection = (currentLocation) => {
   </div>
   `;
   $('#weather').html(domString);
+  getLocationsForDropdown();
 };
 
 const weatherPage = () => {
