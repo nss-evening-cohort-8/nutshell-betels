@@ -1,9 +1,10 @@
+/* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 
 import authHelpers from '../../helpers/authHelpers';
 import locationsData from '../../helpers/data/locationsData';
 import weatherData from '../../helpers/data/weatherData';
-import getLocationsForDropdown from './dropdown';
+import dropdownStuff from './dropdown';
 
 const weatherSection = (currentLocation) => {
   const domString = `
@@ -38,7 +39,7 @@ const weatherSection = (currentLocation) => {
   </div>
   `;
   $('#weather').html(domString);
-  getLocationsForDropdown();
+  dropdownStuff.getLocationsForDropdown();
 };
 
 const weatherPage = () => {
