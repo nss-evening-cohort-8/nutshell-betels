@@ -9,7 +9,7 @@ import createNavbar from './components/Navbar/navbar';
 import weatherStuff from './components/Weather/weather';
 import printArt from './components/Articles/articles';
 import loadEvents from './components/Events/events';
-import getMessages from './components/Messages/messages';
+import initializeMessagesPage from './components/Messages/messages';
 
 import './index.scss';
 
@@ -22,7 +22,7 @@ const initializeApp = () => {
   loginButton();
   checkLoginStatus2.checkLoginStatus(weatherStuff.initializeWeather);
   createNavbar();
-  getMessages();
+  initializeMessagesPage();
   printArt();
   loadEvents.initializeEventsPage();
 };
