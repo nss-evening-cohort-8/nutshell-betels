@@ -10,8 +10,10 @@ import './dropdown.scss';
 const populateLocationsInDropdown = (locationsArray) => {
   let domString = '';
   locationsArray.forEach((location) => {
-    domString += `<a class="dropdown-item" id="${location.id}">${location.city_name}   </a>`;
-    domString += `<i class="fa fa-trash location-trash" data-delete-id=${location.id}></i>`;
+    if (location.isCurrent === false) {
+      domString += `<a class="dropdown-item" id="${location.id}">${location.city_name}   </a>`;
+      domString += `<i class="fa fa-trash location-trash" data-delete-id=${location.id}></i>`;
+    }
   });
   $('#locationsChoices').html(domString);
 };
