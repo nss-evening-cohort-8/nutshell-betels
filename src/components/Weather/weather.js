@@ -1,9 +1,9 @@
 import $ from 'jquery';
-import 'bootstrap';
 
 import authHelpers from '../../helpers/authHelpers';
 import locationsData from '../../helpers/data/locationsData';
 import weatherData from '../../helpers/data/weatherData';
+import getLocationsForDropdown from './dropdown';
 
 const weatherSection = (currentLocation) => {
   const domString = `
@@ -38,6 +38,7 @@ const weatherSection = (currentLocation) => {
   </div>
   `;
   $('#weather').html(domString);
+  getLocationsForDropdown();
 };
 
 const weatherPage = () => {
