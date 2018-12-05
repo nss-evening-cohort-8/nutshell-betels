@@ -1,17 +1,19 @@
+/* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 
 import authHelpers from '../../helpers/authHelpers';
 import locationsData from '../../helpers/data/locationsData';
+import setAllNotCurrent from './weatherCrud';
 
 import './dropdown.scss';
 
 const populateLocationsInDropdown = (locationsArray) => {
   let domString = '';
   locationsArray.forEach((location) => {
-    domString += '<div class="container d-inline-flex>';
-    domString += `<a class="dropdown-item" id="${location.id}">${location.city_name}   </a>`;
-    domString += `<i class="fa fa-trash location-trash" data-delete-id=${location.id}></i>`;
-    domString += '</div>';
+    if (location.isCurrent === false) {
+      domString += `<a class="dropdown-item" id="${location.id}">${location.city_name}   </a>`;
+      domString += `<i class="fa fa-trash location-trash" data-delete-id=${location.id}></i>`;
+    }
   });
   $('#locationsChoices').html(domString);
 };
@@ -27,4 +29,8 @@ const getLocationsForDropdown = () => {
     });
 };
 
-export default getLocationsForDropdown;
+$('body').on('click', '.dropdown-item', setAllNotCurrent);
+
+export default {
+  getLocationsForDropdown,
+};

@@ -2,5 +2,7 @@
   "articles": "fish",
   "events": "cow",
   "messages": "dog",
-  "locations": "bear"
+  "locations": "bear",
+  "friends": "pig",
+  "users": "callan"
 }
