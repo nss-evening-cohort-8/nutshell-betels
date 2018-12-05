@@ -24,23 +24,25 @@ const getArt = () => new Promise((resolve, reject) => {
     });
 });
 
+const stockApi = () => new Promise((resolve, reject) => {
+  axios.get('https://api.iextrading.com/1.0/stock/market/batch?symbols=aapl,fb,tsla&types=quote,news,chart&range=1m&last=5')
+    .then((result) => {
+      resolve(result.data);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+stockApi();
 
 const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stringify(newEntry));
 const deleteArt = artId => axios.delete(`${baseUrl}/articles/${artId}.json`);
 const updateArt = (friendsObject, artId) => axios.put(`${baseUrl}/articles/${artId}.json`, JSON.stringify(friendsObject));
-// const deleteArt = taskId => axios.delete(`${baseUrl}/articles/${taskId}.json`);
 
-
-// export default {
-//   getArt,
-//   addNewAxios,
-//   deleteTask,
-//   updateTask,
-//   getSingleTask,
-// };
 export default {
   getArt,
   addNewAxios,
   deleteArt,
   updateArt,
+  stockApi,
 };
