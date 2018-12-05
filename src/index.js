@@ -13,14 +13,14 @@ import initializeMessagesPage from './components/Messages/messages';
 
 import './index.scss';
 
-const initializeData = () => {
-  weatherStuff.initializeWeather();
-};
+// const initializeData = () => {
+//   weatherStuff.initializeWeather();
+// };
 
 const initializeApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   loginButton();
-  checkLoginStatus2.checkLoginStatus(initializeData);
+  checkLoginStatus2.checkLoginStatus(weatherStuff.initializeWeather);
   createNavbar();
   initializeMessagesPage();
   printArt();
@@ -28,3 +28,5 @@ const initializeApp = () => {
 };
 
 initializeApp();
+
+// export default initializeData;

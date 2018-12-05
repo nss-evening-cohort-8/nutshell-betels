@@ -43,7 +43,10 @@ const getAllLocations = uid => new Promise((resolve, reject) => {
     });
 });
 
+const updateIsCurrent = (locationId, isCurrent) => axios.patch(`${firebaseUrl}/locations/${locationId}.json`, { isCurrent });
+
 export default {
   getCurrentLocation,
   getAllLocations,
+  updateIsCurrent,
 };
