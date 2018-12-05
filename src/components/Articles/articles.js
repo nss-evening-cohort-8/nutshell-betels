@@ -26,7 +26,6 @@ const formForTask = () => {
 const printArt = (dataArray) => {
   let domString = '';
   dataArray.forEach((data) => {
-    console.log(data);
     domString += `
     <div id="${data.id}" class="card cardStartDiv" style="width: 40rem;">
   <div class="card-body">
@@ -77,7 +76,6 @@ const addNewTask = () => {
   const newTask = artFromForm2();
   articlesData.addNewAxios(newTask)
     .then(() => {
-      console.log('DataBase is updated?', newTask);
       printArtSecond2();
     })
     .catch((error) => {
@@ -88,9 +86,7 @@ const addNewTask = () => {
 const deleteArt = (idToDelete) => {
   articlesData.deleteArt(idToDelete)
     .then(() => {
-      console.log('Delete button is wokring');
       printArtSecond2();
-      // domTasks2.domTasks();
     })
     .catch((error) => {
       console.error('error in deleting task', error);
@@ -109,8 +105,6 @@ const getSingleArt = artId => new Promise((resolve, reject) => {
     });
 });
 
-// BELOW IS BEING WORKED ON FOR THE EDIT BUTTON
-
 const formForTask2 = (art) => {
   const domString = `
   <div class="form-row mx-auto" style="width: 40rem">
@@ -123,20 +117,18 @@ const formForTask2 = (art) => {
   </div>
   </div>
   `;
-  // $('#aritlces-add-container-form').html(domString);
   return domString;
 };
 
 
 const editArt = (idToEdit) => {
-  getSingleArt(idToEdit) // only need fromGetter. added to this if you are importing from dataGetter
-    .then((singleArt) => { // not 100% sure on the sigleArt unless it is the resolve
+  getSingleArt(idToEdit)
+    .then((singleArt) => {
       let domString = '';
       domString += formForTask2(singleArt);
-      // $('#aritlces-add-container-form').html(domString).show();
       console.log(domString);
       $('#aritlces-add-container-form').show();
-      $('#aritlces-add-container-form').html(domString); // this is going to add the new form
+      $('#aritlces-add-container-form').html(domString);
     })
     .catch((error) => {
       console.error('error in getting single for edit', error);
