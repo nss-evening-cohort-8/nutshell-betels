@@ -29,8 +29,8 @@ const printArt = (dataArray) => {
     domString += `
     <div id="${data.id}" class="card cardStartDiv" style="width: 40rem;">
   <div class="card-body">
-    <h5 class="card-title">${data.title}</h5>
-    <p class="card-text">${data.synopsis}</p>
+    <h5 class="card-title">${data.synopsis}</h5>
+    <p class="card-text">${data.title}</p>
     <a href="${data.url}" class="btn btn-primary">Go somewhere</a>
     <button id="editArtBut"type="button" class="btn btn-secondary">Edit</button>
     <button id="delArtBut" type="button" class="btn btn-danger">X</button>
@@ -141,6 +141,17 @@ const editArt = (idToEdit) => {
     });
 };
 
+const updateArt = (artId) => {
+  const updatedArt = artFromForm2();
+  articlesData.updateArt(updatedArt, artId)
+    .then(() => {
+      printArtSecond2();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
 const eventBinder2 = () => {
   $('#aritlces-add-container-form').show();
   formForTask();
@@ -155,5 +166,5 @@ $('body').on('click', '#addArtButt', () => { eventBinder2(); });
 $('body').on('click', '#addButtons', () => { eventBinders(); });
 $('body').on('click', '#delArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; deleteArt(idNeeded2); });
 $('body').on('click', '#editArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; editArt(idNeeded2); });
-
+$('body').on('click', '#addButtons2', () => { const idNeeded = $('#addButtons2').data('single-edit-id'); updateArt(idNeeded); });
 export default printArtSecond;

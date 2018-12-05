@@ -27,7 +27,7 @@ const getArt = () => new Promise((resolve, reject) => {
 
 const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stringify(newEntry));
 const deleteArt = artId => axios.delete(`${baseUrl}/articles/${artId}.json`);
-const updateArt = (friendsObject, artId) => axios.put(`${baseUrl}/tasks/${artId}.json`, JSON.stringify(friendsObject));
+const updateArt = (friendsObject, artId) => axios.put(`${baseUrl}/articles/${artId}.json`, JSON.stringify(friendsObject));
 // const deleteArt = taskId => axios.delete(`${baseUrl}/articles/${taskId}.json`);
 
 
