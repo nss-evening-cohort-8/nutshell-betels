@@ -14,6 +14,7 @@ const formForTask = () => {
     <input id="titleId" type="text" class="form-control" id="form-article-title" placeholder="Title">
     <input id="urlId" type="text" class="form-control" id="form-article-url" placeholder="URL"> 
     <button id="addButtons" class="btn btn-primary">Add Article</button>
+    <button id="addCancelButtons2" class="btn btn-primary">Cancel</button>
   </div>
   </div>
   `;
@@ -31,9 +32,9 @@ const printArt = (dataArray) => {
   <div class="card-body">
     <h5 class="card-title">${data.synopsis}</h5>
     <p class="card-text">${data.title}</p>
-    <a href="${data.url}" class="btn btn-primary">Go somewhere</a>
-    <button id="editArtBut"type="button" class="btn btn-secondary">Edit</button>
-    <button id="delArtBut" type="button" class="btn btn-danger">X</button>
+    <a href="${data.url}" target="_blank"  class="btn btn-primary" >Go somewhere</a>
+    <button id="editArtBut"type="button" class="btn btn-primary">Edit</button>
+    <button id="delArtBut" type="button" class="btn btn-primary">X</button>
   </div>
 </div>
     `;
@@ -117,7 +118,8 @@ const formForTask2 = (art) => {
     <input id="synopsisId" type="text" class="form-control" value="${art.synopsis}" id="form-article-synopsis" placeholder="Discription">
     <input id="titleId" type="text" class="form-control" value="${art.title}" id="form-article-title" placeholder="Title">
     <input id="urlId" type="text" class="form-control" value="${art.url}" id="form-article-url" placeholder="URL"> 
-    <button id="addButtons2" data-single-edit-id=${art.id} class="btn btn-primary">Add Article</button>
+    <button id="addButtons2" data-single-edit-id=${art.id} class="btn btn-primary">Update</button>
+    <button id="addCancelButtons2" data-single-edit-id=${art.id} class="btn btn-primary">Cancel</button>
   </div>
   </div>
   `;
@@ -162,8 +164,13 @@ const eventBinders = () => {
   printArtSecond();
 };
 
+const eventBinders3 = () => {
+  $('#aritlces-add-container-form').hide();
+};
+
 $('body').on('click', '#addArtButt', () => { eventBinder2(); });
 $('body').on('click', '#addButtons', () => { eventBinders(); });
+$('body').on('click', '#addCancelButtons2', () => { eventBinders3(); });
 $('body').on('click', '#delArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; deleteArt(idNeeded2); });
 $('body').on('click', '#editArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; editArt(idNeeded2); });
 $('body').on('click', '#addButtons2', () => { const idNeeded = $('#addButtons2').data('single-edit-id'); updateArt(idNeeded); });
