@@ -25,6 +25,17 @@ const addNewLocation = () => {
     });
 };
 
+const deleteLocation = (e) => {
+  const idToDelete = e.target.dataset.deleteId;
+  locationsData.deleteLocationAxios(idToDelete)
+    .then(() => {
+      weatherCrap.initializeWeather();
+    })
+    .catch((error) => {
+      console.error('error in deleting location', error);
+    });
+};
+
 const setNewLocation = (locationId) => {
   const isItCurrent = true;
   locationsData.updateIsCurrent(locationId, isItCurrent);
@@ -48,5 +59,6 @@ const setAllNotCurrent = (e) => {
 };
 
 $('body').on('click', '.add-location', addNewLocation);
+$('body').on('click', '.location-trash', deleteLocation);
 
 export default setAllNotCurrent;

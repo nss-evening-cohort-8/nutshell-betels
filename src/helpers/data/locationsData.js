@@ -43,6 +43,8 @@ const getAllLocations = uid => new Promise((resolve, reject) => {
     });
 });
 
+const deleteLocationAxios = locationId => axios.delete(`${firebaseUrl}/locations/${locationId}.json`);
+
 const addNewLocationAxios = locationObject => axios.post(`${firebaseUrl}/locations.json`, JSON.stringify(locationObject));
 
 const updateIsCurrent = (locationId, isCurrent) => axios.patch(`${firebaseUrl}/locations/${locationId}.json`, { isCurrent });
@@ -52,4 +54,5 @@ export default {
   getAllLocations,
   updateIsCurrent,
   addNewLocationAxios,
+  deleteLocationAxios,
 };
