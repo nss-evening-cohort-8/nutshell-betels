@@ -1,14 +1,23 @@
 {
   "event1": {
-    "userUid": "12345",
+    "uid": "12345",
     "event": "Bonfire at the beach",
-    "startDate": 1528763298535,
-    "location": "Ocean Beach"
+    "startDate": "October 31st",
+    "location": "Ocean Beach",
+    "url": "https://www.facebook.com/events/413781042373316/"
   },
   "event2": {
-    "userUid": "12345",
-    "event": "Nap",
-    "startDate": 1528763298536,
-    "location": "NSS"
+    "uid": "999888222",
+    "event": "Beerfest",
+    "startDate": "July 4th",
+    "location": "Munich",
+    "url": "http://beeradvocate.com/"
+  },
+  "event3": {
+    "uid": "098324092384",
+    "event": "The Barkley Marathons",
+    "startDate": "April 1st",
+    "location": "Frozen Head State Park",
+    "url": "http://barkleymarathons.com/"
   }
 }

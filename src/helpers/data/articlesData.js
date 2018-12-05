@@ -25,7 +25,10 @@ const getArt = () => new Promise((resolve, reject) => {
 });
 
 
-// const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
+const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stringify(newEntry));
+const deleteArt = artId => axios.delete(`${baseUrl}/articles/${artId}.json`);
+const updateArt = (friendsObject, artId) => axios.put(`${baseUrl}/articles/${artId}.json`, JSON.stringify(friendsObject));
+// const deleteArt = taskId => axios.delete(`${baseUrl}/articles/${taskId}.json`);
 
 
 // export default {
@@ -35,4 +38,9 @@ const getArt = () => new Promise((resolve, reject) => {
 //   updateTask,
 //   getSingleTask,
 // };
-export default getArt;
+export default {
+  getArt,
+  addNewAxios,
+  deleteArt,
+  updateArt,
+};

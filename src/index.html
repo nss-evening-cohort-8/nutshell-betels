@@ -8,43 +8,45 @@
     crossorigin="anonymous">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Nutshell</title>
-  <div id="nice"></div>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
 </head>
 
 <body>
   <div id="auth"></div>
-  <div id="nav">nav placeholder</div>
+  <div id="nav"></div>
   <div id="content-wrapper" class="container">
-    <div id="weather">weather</div>
+    <div id="weather"></div>
     <div id="events">
-      <div class="eventWrapper" style="width: 40rem">
-        <div class="card pl-2" style="width: 40rem">
-          <h3 class="mr-5 pt-3 d-flex justify-content-center">Events</h3>
-          <div>
-            <button type="button" class="btn btn-primary m-5" style="width: 30rem">Add Event</button>
-          </div>
+        <div class="eventWrapper" style="width: 30rem">
+            <div class="card pl-2"style="width: 30rem">
+                <h3 class="mr-5 ml-2 pt-3 d-flex justify-content-center">Events</h3>
+              <div> 
+                <button id="add-button" type="button" class="btn btn-primary m-5" style="width: 22rem">Add Event</button>
+              </div> 
+            </div>
+           <div id="events-add-container-form"></div>
         </div>
-        <div id="events-add-container-form"></div>
       </div>
       <div id="events-container"></div>
-    </div>
+    
     <div id="messages-container">messages</div>
 
     <div id="articles">
       <div class="headerArticleWrapper" style="width: 40rem">
-        <div class="card imgH3" style="width: 40rem">
-          <img class="artImg" src="https://vignette.wikia.nocookie.net/halofanon/images/c/c9/BBC_News.png/revision/latest?cb=20101105020913"
-            alt="Card image cap" style="width: 10rem">
-          <h3>Share, Read, Post all the news of the world. All in
-            one place!
-          </h3>
-        </div>
-        <div id="aritlces-add-container-form"></div>
+          <div class="card imgH3"style="width: 40rem">
+              <img class="artImg" src="https://vignette.wikia.nocookie.net/halofanon/images/c/c9/BBC_News.png/revision/latest?cb=20101105020913" alt="Card image cap" style="width: 10rem">
+              <h3>Share, Read, Post all the news of the world. All in 
+                one place!
+              </h3>
+              <button id="addArtButt" type="button" class="btn btn-primary">Add</button>
+          </div>
+          <div id="aritlces-add-container-form"></div>
       </div>
       <div id="articles-container">articles</div>
     </div>
   </div>
-
+</div>
 </body>
 
 </html>
