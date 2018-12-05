@@ -3,5 +3,6 @@
   "events": "cow",
   "messages": "dog",
   "locations": "bear",
-  "friends": "pig"
+  "friends": "pig",
+  "users": "callan"
 }
