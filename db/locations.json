@@ -2,81 +2,97 @@
   "location1": {
     "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 77001,
+    "city_name": "Houston",
     "isCurrent": true
   },
   "location2": {
     "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 77001,
+    "city_name": "Houston",
     "isCurrent": true
   },
   "location3": {
     "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 77001,
+    "city_name": "Houston",
     "isCurrent": true
 },
   "location4": {
     "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 77001,
+    "city_name": "Houston",
     "isCurrent": true
 },
   "location5": {
     "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 37011,
+    "city_name": "Nashville",
     "isCurrent": false
   },
   "location6": {
     "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 37011,
+    "city_name": "Nashville",
     "isCurrent": false
   },
   "location7": {
     "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 37011,
+    "city_name": "Nashville",
     "isCurrent": false
 },
   "location8": {
     "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 37011,
+    "city_name": "Nashville",
     "isCurrent": false
 },
   "location9": {
     "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 60007,
+    "city_name": "Chicago",
     "isCurrent": false
   },
   "location10": {
     "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 60007,
+    "city_name": "Chicago",
     "isCurrent": false
   },
   "location11": {
     "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 60007,
+    "city_name": "Chicago",
     "isCurrent": false
 },
   "location12": {
     "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 60007,
+    "city_name": "Chicago",
     "isCurrent": false
 },
   "location13": {
     "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 90001,
+    "city_name": "Los Angeles",
     "isCurrent": false
   },
   "location14": {
     "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 90001,
+    "city_name": "Los Angeles",
     "isCurrent": false
   },
   "location15": {
     "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 90001,
+    "city_name": "Los Angeles",
     "isCurrent": false
 },
   "location16": {
     "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 90001,
+    "city_name": "Los Angeles",
     "isCurrent": false
 }
 }
