@@ -1,0 +1,10 @@
+{
+  "user1": {
+    "username": "Cat Lady",
+    "uid": "12345"
+  },
+  "user2": {
+    "username": "John Smith",
+    "uid": "67890"
+  }
+}
