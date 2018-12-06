@@ -31,7 +31,7 @@ const printArt = (dataArray) => {
   <div class="card-body">
     <h5 class="card-title">${data.synopsis}</h5>
     <p class="card-text">${data.title}</p>
-    <a href="${data.url}" target="_blank"  class="btn btn-primary" >Go somewhere</a>
+    <a href="${data.url}" target="_blank"  class="btn btn-primary" >Read More</a>
     <button id="editArtBut"type="button" class="btn btn-primary">Edit</button>
     <button id="delArtBut" type="button" class="btn btn-primary">X</button>
   </div>
@@ -167,10 +167,50 @@ $('body').on('click', '#delArtBut', (e) => { const idNeeded = $(e.target).closes
 $('body').on('click', '#editArtBut', (e) => { const idNeeded = $(e.target).closest('div').parent(); const idNeeded2 = idNeeded[0].id; editArt(idNeeded2); });
 $('body').on('click', '#addButtons2', () => { const idNeeded = $('#addButtons2').data('single-edit-id'); updateArt(idNeeded); });
 
+
+const stockString = (data) => {
+  const domString2 = `
+  <div class="card-group">
+  <div class="card">
+  <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/61T4iK0hdqL._SX466_.jpg" height="180" width="293" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">${data.AAPL.news[0].headline}</h5>
+      <p class="card-text">${data.AAPL.news[0].summary}<a href="${data.AAPL.news[0].url}"target="_blank">CLICK HERE</a></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"> Updated: ${data.AAPL.chart[0].date}</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="https://regmedia.co.uk/2017/07/28/shutterstock_facebook3.jpg" height="180" width="293" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">${data.FB.news[0].headline}</h5>
+      <p class="card-text">${data.FB.news[0].summary}<a href="${data.FB.news[0].url}"target="_blank">CLICK HERE</a></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Updated: ${data.FB.chart[0].date}</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="http://www.logosvectorfree.com/wp-content/uploads/2017/12/Tesla-Logo-Vector-Free-PNG.jpg" height="180" width="293" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">${data.TSLA.news[0].headline}</h5>
+      <p class="card-text">${data.TSLA.news[0].summary}<a href="${data.TSLA.news[0].url}"target="_blank">CLICK HERE</a></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Updated: ${data.TSLA.chart[0].date}</small>
+    </div>
+  </div>
+</div>
+  `;
+  $('#stockNews').html(domString2);
+};
+
+
 const getStockApi = () => {
   articlesData.stockApi()
     .then((data) => {
-      console.log(data);
+      stockString(data);
     })
     .catch((error) => {
       console.error('error in getting location', error);

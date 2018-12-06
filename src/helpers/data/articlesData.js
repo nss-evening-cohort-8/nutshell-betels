@@ -33,7 +33,7 @@ const stockApi = () => new Promise((resolve, reject) => {
       reject(error);
     });
 });
-stockApi();
+// stockApi();
 
 const addNewAxios = newEntry => axios.post(`${baseUrl}/articles.json`, JSON.stringify(newEntry));
 const deleteArt = artId => axios.delete(`${baseUrl}/articles/${artId}.json`);
