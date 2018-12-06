@@ -1,9 +1,13 @@
+// Author: Marshall Offutt
+// Purpose: The get-and-print weather functions.
+
+/* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 
 import authHelpers from '../../helpers/authHelpers';
 import locationsData from '../../helpers/data/locationsData';
 import weatherData from '../../helpers/data/weatherData';
-import getLocationsForDropdown from './dropdown';
+import dropdownStuff from './dropdown';
 
 const weatherSection = (currentLocation) => {
   const domString = `
@@ -31,14 +35,18 @@ const weatherSection = (currentLocation) => {
 
       </div>
     </div>
+    <div class="card-body">
+    <h5>Enter zipcode and city to add a new location</h5>
       <div class="card-body d-inline-flex justify-content-between">
-        <input id="zipCodeInputField" class="form-control mr-sm-2" type="enterZip" placeholder="Enter zip code" aria-label="Enter zip code">
-        <button class="btn btn-primary">Add location</button>
+        <input id="zipCodeInputField" class="form-control mr-sm-2" type="enterZip" placeholder="Zip code" aria-label="Enter zip code">
+        <input id="cityInputField" class="form-control mr-sm-2" type="enterCity" placeholder="City" aria-label="Enter city">
+        <button class="btn btn-primary add-location">Add location</button>
+      </div>
       </div>
   </div>
   `;
   $('#weather').html(domString);
-  getLocationsForDropdown();
+  dropdownStuff.getLocationsForDropdown();
 };
 
 const weatherPage = () => {

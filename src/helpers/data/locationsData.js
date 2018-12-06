@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: Reusable helper functions that interact with Firebase for locations. Axios CRUD methods.
+
 import axios from 'axios';
 import apiKeys from '../../../db/apiKeys.json';
 
@@ -43,7 +46,24 @@ const getAllLocations = uid => new Promise((resolve, reject) => {
     });
 });
 
+const deleteLocationAxios = locationId => axios.delete(`${firebaseUrl}/locations/${locationId}.json`);
+
+const addNewLocationAxios = locationObject => axios.post(`${firebaseUrl}/locations.json`, JSON.stringify(locationObject));
+
+const updateIsCurrent = (locationId, isCurrent) => new Promise((resolve, reject) => {
+  axios.patch(`${firebaseUrl}/locations/${locationId}.json`, { isCurrent })
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
 export default {
   getCurrentLocation,
   getAllLocations,
+  updateIsCurrent,
+  addNewLocationAxios,
+  deleteLocationAxios,
 };
