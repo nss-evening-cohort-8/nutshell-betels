@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: The get-and-print weather functions.
+
 /* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 

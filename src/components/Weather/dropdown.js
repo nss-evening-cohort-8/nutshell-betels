@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: Dropdown component for the weather builder.
+
 /* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 

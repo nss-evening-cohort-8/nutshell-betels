@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: Reusable helper functions that interact with Firebase for locations. Axios CRUD methods.
+
 import axios from 'axios';
 import apiKeys from '../../../db/apiKeys.json';
 
