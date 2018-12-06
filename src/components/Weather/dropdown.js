@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: Dropdown component for the weather builder.
+
 /* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 
@@ -11,8 +14,7 @@ const populateLocationsInDropdown = (locationsArray) => {
   let domString = '';
   locationsArray.forEach((location) => {
     if (location.isCurrent === false) {
-      domString += `<a class="dropdown-item" id="${location.id}">${location.city_name}   </a>`;
-      domString += `<i class="fa fa-trash location-trash" data-delete-id=${location.id}></i>`;
+      domString += `<span class="d-inline-flex justify-content-between align-items-center"><a class="dropdown-item" id="${location.id}">${location.city_name}</a> <i style="color: red;" class="fa fa-trash location-trash mb-3 mr-4" data-delete-id=${location.id}></i></span>`;
     }
   });
   $('#locationsChoices').html(domString);

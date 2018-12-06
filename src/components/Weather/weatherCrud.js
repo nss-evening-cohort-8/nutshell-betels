@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: CRUD functions for locations. The click events, and the functions that they trigger.
+
 /* eslint import/no-cycle: 0 */
 import $ from 'jquery';
 import authHelpers from '../../helpers/authHelpers';

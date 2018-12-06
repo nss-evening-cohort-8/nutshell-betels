@@ -1,3 +1,6 @@
+// Author: Marshall Offutt
+// Purpose: Reusable helper function to make call for weatherbit api
+
 import axios from 'axios';
 import apiKeys from '../../../db/apiKeys.json';
 
