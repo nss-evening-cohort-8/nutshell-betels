@@ -8,14 +8,16 @@ moment().format();
 const timestampFunction = () => moment().format('YYYY-MM-DD h:mm:ss a');
 
 
-const messageSection = (messagesArray) => {
+const messageSection = (messageArray) => {
   let domString = '';
-  domString += `     <div class="card rounded shadow">
+  domString += `<div class="card rounded shadow w-100">
       <div class="class-header">
       <h5 class="text-center bg-dark text-light p-2">Messages</h5>
       </div>`;
-
-  messagesArray.forEach((messages) => {
+  if (messageArray.length > 20) {
+    messageArray.shift(messageArray.length - 20, messageArray.length);
+  }
+  messageArray.forEach((messages) => {
     // const userUid = firebase.auth().currentUser;
     domString += `
       <div class="card-body p-0 px-1 d-flex justify-content-between ">
@@ -23,9 +25,13 @@ const messageSection = (messagesArray) => {
             <h6 class="m-1">${messages.userName}</h6>
             <p class="text-secondary m-1">${timestampFunction()}</p>
           </div>
-        <p class="flex-item mx-5 py-3 px-3 w-100" style="background-color:#fffde7 ;">${messages.message}</p>
-        <button type="submit" class="edit-btn btn btn-light flex-item m-1" data-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 24px";></i></button>
-        <button type="submit" class="del-btn btn btn-light flex-item m-1" data-delete-id=${messages.id}><i class="fas fa-trash-alt" style="font-size: 24px";></i></button>
+          <div class="w-100 mx-3 p-2" style="background-color:#fffde7;">
+        <p class="flex-item w-100"><i class="text-primary">${messages.message}</i></p>
+        </div>
+        <div class="w-25 flex-item">
+        <button type="submit" class="edit-btn btn btn-light m-1" data-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 20px";></i></button>
+        <button type="submit" class="del-btn btn btn-light m-1" data-delete-id=${messages.id}><i class="fas fa-trash-alt" style="font-size: 20px";></i></button>
+        </div>
       </div>
       <hr>
     `;
@@ -40,29 +46,15 @@ const messageSection = (messagesArray) => {
 
 const getMessages = () => {
   messagesData.getAllMessages()
-    .then((data) => {
-      messageSection(data);
+    .then((messageArray) => {
+      messageSection(messageArray);
     })
     .catch((error) => {
       console.error(error);
     });
 };
 
-
-// ----------------- DELETING MESSAGE ------------------------
-
-const deleteMessage = (e) => {
-  const idToDelete = e.target.dataset.deleteId; // Grabs the id from Delete button
-  messagesData.deleteMessage(idToDelete) // Delete from Firebase
-    .then(() => {
-      getMessages(); // pupulate the messages again
-    })
-    .catch((error) => {
-      console.error(error, 'Error Deleteing Message');
-    });
-};
-
-// ----------------- ADDING MESSAGE ------------------------
+// ----------------- ADDING MESSAGE --------------------------
 const gettingMessageFromInputField = () => {
   const message = {
     message: $('#msgInput').val(),
@@ -74,27 +66,45 @@ const gettingMessageFromInputField = () => {
   return message;
 };
 
-
 const addNewMessage = () => {
   const newMessage = gettingMessageFromInputField();
   messagesData.addMessageAxios(newMessage)
     .then(() => {
-      messageSection();
+      getMessages(); // this function creates data to DOM
+      $('#msgInput').val('');
     })
     .catch((error) => {
       console.error('error', error);
     });
 };
 
+// -------------------------------------------------------------
+
+// ----------------- DELETING MESSAGE ------------------------
+
+const deleteMessage = (e) => {
+  // const idToDelete = e.target.dataset.deleteId; // Grabs the id from Delete button
+  const idToDelete = $(e.target).closest('.del-btn').data('data-delete-id');
+  messagesData.deleteMessage(idToDelete) // Delete from Firebase
+    .then(() => {
+      getMessages(); // pupulate the messages again
+    })
+    .catch((error) => {
+      console.error(error, 'Error Deleteing Message');
+    });
+};
+
+
 $('body').on('keyup', '#msgInput', (e) => {
   e.preventDefault();
   if (e.keyCode === 13) {
     addNewMessage();
-    $('#msgInput').val('');
   }
 });
 
 $('body').on('click', '.del-btn', deleteMessage); // On body when click on delete button then run deleteMessage function
+// $('body').on('click', '.edit-btn', editMessage); // On body when click on delete button then
+//  run editeMessage function
 
 const initializeMessagesPage = () => {
   getMessages();
