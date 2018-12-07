@@ -23,20 +23,11 @@ const getAllMessages = () => new Promise((resolve, reject) => {
 
 const deleteMessage = messageId => axios.delete(`${firebaseUrl}/messages/${messageId}.json`); // It send a request to Firebase for deleteing
 const addMessageAxios = messageObject => axios.post(`${firebaseUrl}/messages.json`, JSON.stringify(messageObject));
-// Adding a new message to Firebase database
-
-// const addMessageAxios = messageObject => new Promise((resolve, reject) => {
-//   axios.post(`${firebaseUrl}/messages.json`, JSON.stringify(messageObject))
-//     .then((result) => {
-//       resolve(result);
-//     })
-//     .catch((error) => {
-//       reject(error);
-//     });
-// });
+const editMessageAxios = (messageId, messageObject) => axios.patch(`${firebaseUrl}/messages/${messageId}.json`, JSON.stringify(messageObject));
 
 export default {
   getAllMessages,
   deleteMessage,
   addMessageAxios,
+  editMessageAxios,
 };

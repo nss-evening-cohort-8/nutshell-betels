@@ -26,10 +26,10 @@ const messageSection = (messageArray) => {
             <p class="text-secondary m-1">${timestampFunction()}</p>
           </div>
           <div class="w-100 mx-3 p-2" style="background-color:#fffde7;">
-        <p class="flex-item w-100"><i class="text-primary">${messages.message}</i></p>
+        <p class="msg-container flex-item w-100 text-primary"><em>${messages.message}</em></p>
         </div>
         <div class="w-25 flex-item">
-        <button type="submit" class="edit-btn btn btn-light m-1" data-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 20px";></i></button>
+        <button type="submit" class="editt-btn btn btn-light m-1" data-message-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 20px";></i></button>
         <button type="submit" class="del-btn btn btn-light m-1" data-delete-id=${messages.id}><i class="fas fa-trash-alt" style="font-size: 20px";></i></button>
         </div>
       </div>
@@ -78,8 +78,6 @@ const addNewMessage = () => {
     });
 };
 
-// -------------------------------------------------------------
-
 // ----------------- DELETING MESSAGE ------------------------
 
 const deleteMessage = (e) => {
@@ -105,6 +103,45 @@ $('body').on('keyup', '#msgInput', (e) => {
 $('body').on('click', '.del-btn', deleteMessage); // On body when click on delete button then run deleteMessage function
 // $('body').on('click', '.edit-btn', editMessage); // On body when click on delete button then
 //  run editeMessage function
+
+
+// ----------------- Editing MESSAGE ------------------------
+
+const gettingMessageObjectFromEdit = (message) => {
+  const editedMessage = {
+    message,
+    userUid: authHelpers.getCurrentUid(),
+    userName: authHelpers.getUserName(),
+    isEdited: true,
+    timestamp: timestampFunction(),
+  };
+  return editedMessage;
+};
+
+$('body').on('keyup', '.inputEditedText', (e) => {
+  if (e.keyCode === 13) {
+    const editedtext = e.target.value;
+    const edittId = e.target.dataset.inputId;
+    messagesData.editMessageAxios(gettingMessageObjectFromEdit(editedtext), edittId)
+      .then(() => {
+        getMessages();
+      });
+  }
+});
+
+const editMessage = (e) => {
+  const messageIdToEdit = e.target.dataset.messageEditId;
+  const messageToEdit = $(e.target).closest('.msg-container')[0];
+  const divHtml = $(e.target).closest('.msg-container').innerText;
+  const editableText = `<input type="text" data-input-id=${messageIdToEdit}" class="inputEditedText" value="${divHtml}"/>`;
+  $(messageToEdit).replaceWith(editableText);
+};
+
+$('body').on('click', '.editt-btn', (e) => {
+  e.preventDefault();
+  editMessage();
+});
+// $('body').on('click', '.editt-btn', editMessage, console.log('hi'));
 
 const initializeMessagesPage = () => {
   getMessages();
