@@ -2,21 +2,26 @@
 
 import $ from 'jquery';
 import events from '../../helpers/data/eventsData';
+import './events.scss';
 
 const printEvents = (eventsArray) => {
   let domString = '';
   eventsArray.forEach((event) => {
     domString += `
-      <div class="card d-flex justify-content-center" style="width: 30rem;">
-        <div class="card-body" ${event.uid}>
-          <h3 class="card-title d-flex justify-content-center">${event.event}</h3>
-          <h3 class="d-flex justify-content-center">${event.startDate}</h3>
-          <h5 class="card-text d-flex justify-content-center">${event.location}</h5>
-          <div class="d-flex justify-content-center"><h5><a href="${event.url}" class="card-link">Event Link</a></h5></div>
-          <div class="d-flex justify-content-center"><button class='btn btn-danger delete-btn m-1' data-delete-id=${event.id}>Delete</button>
-          <button class='btn btn-info edit-btn m-1' data-edit-id=${event.id}>Edit</button></div>
-        </div>
-      </div>`;
+    <div class="card-media">
+      <div class="card-media-object-container" ${event.uid}>
+        <img class="img-here" src=${event.img}
+      </div>
+    <div class="card-media-body">
+        <h3 class="subtle">${event.startDate}</h3>
+      <h3 class="card-media-body-heading">${event.event}</h3>
+        <h4 class="card-media-body-supporting-bottom-text subtle">${event.location}</h4>
+        <a href="${event.url}" class="card-media-body-supporting-bottom-text card-media-link u-float-right">VIEW EVENT</a>
+        <button class='btn btn-danger delete-btn m-1' data-delete-id=${event.id}>Delete</button>
+        <button class='btn btn-info edit-btn m-1' data-edit-id=${event.id}>Edit</button>
+      </div>
+    </div>
+  </div>`;
     $('#events-container').html(domString);
     $('#events-add-container-form').html(domString).hide();
   });
@@ -26,6 +31,8 @@ const eventForm = (event) => {
   const domString = `
   <div class="form-row2 m-3">
   <div class="form-group2">
+    <label  for="form-task-id"></label>
+    <input type="text" class="form-control" value="${event.img}" id="form-img-id" placeholder="${event.img}">
     <label  for="form-task-id"></label>
     <input type="text" class="form-control" value="${event.uid}" id="form-event-id" placeholder="Event Id">
     <label for="form-task-complete"></label>
@@ -51,6 +58,7 @@ const buildAddForm = () => {
     location: '',
     url: '',
     uid: '',
+    img: 'https://source.unsplash.com/collection/1658153/250x350',
   };
   let domString = '<h2 class="d-flex justify-content-center pt-4">Add New Event</h2>';
   domString += eventForm(emptyEvent);
@@ -61,6 +69,7 @@ const buildAddForm = () => {
 
 const formForEvent = () => {
   const eventFromForm = {
+    img: $('#form-img-id').val(),
     uid: $('#form-event-id').val(),
     event: $('#form-event-name').val(),
     startDate: $('#form-event-date').val(),

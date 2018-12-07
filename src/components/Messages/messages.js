@@ -7,7 +7,6 @@ const moment = require('moment');
 moment().format();
 const timestampFunction = () => moment().format('YYYY-MM-DD h:mm:ss a');
 
-
 const messageSection = (messageArray) => {
   let domString = '';
   domString += `<div class="card rounded shadow w-100">
@@ -25,12 +24,12 @@ const messageSection = (messageArray) => {
             <h6 class="m-1">${messages.userName}</h6>
             <p class="text-secondary m-1">${timestampFunction()}</p>
           </div>
-          <div class="w-100 mx-3 p-2" style="background-color:#fffde7;">
-        <p class="msg-container flex-item w-100 text-primary"><em>${messages.message}</em></p>
+        <div class="mo w-100 mx-3 p-2" style="background-color:#fffde7;">
+          <p class="mssg flex-item w-100 text-primary">${messages.message}</p>
         </div>
-        <div class="w-25 flex-item">
-        <button type="submit" class="editt-btn btn btn-light m-1" data-message-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 20px";></i></button>
-        <button type="submit" class="del-btn btn btn-light m-1" data-delete-id=${messages.id}><i class="fas fa-trash-alt" style="font-size: 20px";></i></button>
+        <div class="w-25 flex-item test">
+          <button type="submit" class="editt-btn btn btn-light m-1" data-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 20px"; data-edit-id=${messages.id}></i></button>
+          <button type="submit" class="del-btn btn btn-light m-1" data-delete-id=${messages.id}><i class="fas fa-trash-alt" style="font-size: 20px" ;data-delete-id=${messages.id}></i></button>
         </div>
       </div>
       <hr>
@@ -82,7 +81,8 @@ const addNewMessage = () => {
 
 const deleteMessage = (e) => {
   // const idToDelete = e.target.dataset.deleteId; // Grabs the id from Delete button
-  const idToDelete = $(e.target).closest('.del-btn').data('data-delete-id');
+  const idToDelete = $(e.target).closest('.del-btn').data('delete-id');
+  console.log(idToDelete);
   messagesData.deleteMessage(idToDelete) // Delete from Firebase
     .then(() => {
       getMessages(); // pupulate the messages again
@@ -110,37 +110,38 @@ $('body').on('click', '.del-btn', deleteMessage); // On body when click on delet
 const gettingMessageObjectFromEdit = (message) => {
   const editedMessage = {
     message,
-    userUid: authHelpers.getCurrentUid(),
-    userName: authHelpers.getUserName(),
+    // userUid: authHelpers.getCurrentUid(),
+    // userName: authHelpers.getUserName(),
     isEdited: true,
-    timestamp: timestampFunction(),
+    // timestamp: timestampFunction(),
   };
   return editedMessage;
 };
 
+
 $('body').on('keyup', '.inputEditedText', (e) => {
   if (e.keyCode === 13) {
-    const editedtext = e.target.value;
+    const editedText = e.target.value;
     const edittId = e.target.dataset.inputId;
-    messagesData.editMessageAxios(gettingMessageObjectFromEdit(editedtext), edittId)
+    messagesData.editMessageAxios(gettingMessageObjectFromEdit(editedText), edittId)
       .then(() => {
         getMessages();
       });
   }
 });
 
+
 const editMessage = (e) => {
-  const messageIdToEdit = e.target.dataset.messageEditId;
-  const messageToEdit = $(e.target).closest('.msg-container')[0];
-  const divHtml = $(e.target).closest('.msg-container').innerText;
-  const editableText = `<input type="text" data-input-id=${messageIdToEdit}" class="inputEditedText" value="${divHtml}"/>`;
+  e.preventDefault();
+  const messageIdToEdit = e.target.dataset.editId;
+  const messageToEdit = $(e.target).closest('.test').siblings('.mo')[0];
+  const divHtml = $(e.target).closest('.test').siblings('.mo')[0].innerText;
+  const editableText = `<input type="text" data-input-id=${messageIdToEdit}" class="inputEditedText" id="editedWords" value="${divHtml}"/>`;
   $(messageToEdit).replaceWith(editableText);
 };
 
-$('body').on('click', '.editt-btn', (e) => {
-  e.preventDefault();
-  editMessage();
-});
+$('body').on('click', '.editt-btn', editMessage);
+
 // $('body').on('click', '.editt-btn', editMessage, console.log('hi'));
 
 const initializeMessagesPage = () => {

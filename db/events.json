@@ -1,6 +1,7 @@
 {
   "event1": {
     "uid": "12345",
+    "img": "https://source.unsplash.com/collection/497/100x150",
     "event": "Bonfire at the beach",
     "startDate": "October 31st",
     "location": "Ocean Beach",
@@ -8,6 +9,7 @@
   },
   "event2": {
     "uid": "999888222",
+    "img": "https://source.unsplash.com/collection/762765/100x150",
     "event": "Beerfest",
     "startDate": "July 4th",
     "location": "Munich",
@@ -15,6 +17,7 @@
   },
   "event3": {
     "uid": "098324092384",
+    "img": "https://source.unsplash.com/collection/1244074/100x150",
     "event": "The Barkley Marathons",
     "startDate": "April 1st",
     "location": "Frozen Head State Park",
