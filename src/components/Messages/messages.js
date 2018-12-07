@@ -110,8 +110,8 @@ $('body').on('click', '.del-btn', deleteMessage); // On body when click on delet
 const gettingMessageObjectFromEdit = (message) => {
   const editedMessage = {
     message,
-    // userUid: authHelpers.getCurrentUid(),
-    // userName: authHelpers.getUserName(),
+    userUid: authHelpers.getCurrentUid(),
+    userName: authHelpers.getUserName(),
     isEdited: true,
     // timestamp: timestampFunction(),
   };
@@ -136,7 +136,7 @@ const editMessage = (e) => {
   const messageIdToEdit = e.target.dataset.editId;
   const messageToEdit = $(e.target).closest('.test').siblings('.mo')[0];
   const divHtml = $(e.target).closest('.test').siblings('.mo')[0].innerText;
-  const editableText = `<input type="text" data-input-id=${messageIdToEdit}" class="inputEditedText" id="editedWords" value="${divHtml}"/>`;
+  const editableText = `<input type="text" data-input-id=${messageIdToEdit}" class="inputEditedText border border-warning w-100 p-2 mx-3" style="background-color:#fff9c4;" id="editedWords" value="${divHtml}"/>`;
   $(messageToEdit).replaceWith(editableText);
 };
 
