@@ -1,3 +1,6 @@
+// Author: Chase
+// Purpose: Getting and printing event functions.
+
 /* eslint-disable import/no-cycle */
 
 import $ from 'jquery';

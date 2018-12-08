@@ -1,3 +1,6 @@
+// Author: Chase Hamby
+// Purpose: Calls for Event data
+
 /* eslint-disable import/no-cycle */
 import axios from 'axios';
 import eventStuff from '../../components/Events/events';
