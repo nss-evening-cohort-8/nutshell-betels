@@ -10,7 +10,6 @@ import weatherStuff from './components/Weather/weather';
 import printArt from './components/Articles/articles';
 import loadEvents from './components/Events/events';
 import initializeMessagesPage from './components/Messages/messages';
-
 import './index.scss';
 
 // const initializeData = () => {
