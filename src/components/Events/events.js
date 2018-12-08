@@ -1,8 +1,24 @@
+// Author: Chase
+// Purpose: Getting and printing event functions.
+
 /* eslint-disable import/no-cycle */
 
 import $ from 'jquery';
 import events from '../../helpers/data/eventsData';
 import './events.scss';
+
+// Had to put this function into the print events so events wouldn't show on page when logged out //
+const eventStuff = () => {
+  const domString = `
+      <div class="card pl-2" style="width: 40rem">
+      <h3 class="mr-5 ml-2 d-flex justify-content-center">Events</h3>
+      <div>
+        <button id="add-button" type="button" class="btn btn-primary m-3 ml-3" style="width: 33rem">Add Event</button>
+      </div>
+    </div>
+  `;
+  return domString;
+};
 
 const printEvents = (eventsArray) => {
   let domString = '';
@@ -22,7 +38,8 @@ const printEvents = (eventsArray) => {
       </div>
     </div>
   </div>`;
-    $('#events-container').html(domString);
+    $('#events-container').html(eventStuff());
+    $('#events-container').append(domString);
     $('#events-add-container-form').html(domString).hide();
   });
 };
