@@ -57,7 +57,7 @@ const emptyBucket = () => {
     <div class="card-body d-inline-flex justify-content-between">
       <input id="setZip" class="form-control mr-sm-2" type="enterZip" placeholder="Zip code" aria-label="Enter zip code">
       <input id="setCity" class="form-control mr-sm-2" type="enterCity" placeholder="City" aria-label="Enter city">
-      <button class="btn btn-primary add-location">Set Current Location</button>
+      <button class="btn btn-primary set-location">Set Current Location</button>
     </div>
   </div>
   `;
