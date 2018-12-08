@@ -1,3 +1,6 @@
+// Author: Mohammad Khezri
+// Purpose: Calls for Event data
+
 import axios from 'axios';
 import apiKeys from '../../../db/apiKeys';
 

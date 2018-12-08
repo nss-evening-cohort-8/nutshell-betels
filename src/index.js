@@ -15,8 +15,7 @@ import './index.scss';
 const initializeApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   loginButton();
-  weatherStuff.emptyBucket();
-  checkLoginStatus2.checkLoginStatus(weatherStuff.initializeWeather);
+  checkLoginStatus2.checkLoginStatus(weatherStuff.emptyBucket);
   createNavbar();
   checkLoginStatus2.checkLoginStatus(initializeMessagesPage);
   checkLoginStatus2.checkLoginStatus(printArt2.printArtSecond);
@@ -25,5 +24,3 @@ const initializeApp = () => {
 };
 
 initializeApp();
-
-// export default initializeData;
