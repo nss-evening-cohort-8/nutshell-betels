@@ -11,8 +11,8 @@ const checkLoginStatus = (initializeData) => {
       initializeData();
     } else {
       $('#auth').fadeIn(1000);
-      $('#nav').fadeOut(1000);
-      $('#content-wrapper').fadeOut(1000);
+      $('#nav').hide();
+      $('#content-wrapper').hide();
     }
   });
 };

@@ -217,6 +217,4 @@ const getStockApi = () => {
     });
 };
 
-getStockApi();
-
-export default printArtSecond;
+export default { printArtSecond, getStockApi };
