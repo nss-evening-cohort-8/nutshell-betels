@@ -1,3 +1,6 @@
+// Author: Wayne Collier
+// Purpose: To print articles, API stock News, stock Ticker and News module
+
 import $ from 'jquery';
 import axios from 'axios';
 import articlesData from '../../helpers/data/articlesData';
@@ -5,6 +8,37 @@ import getCurrentUid2 from '../../helpers/authHelpers';
 import apiKeys from '../../../db/apiKeys';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
+
+const trading = () => {
+  const domString = `
+  <div class="tradingview-widget-container">
+  <div id="tradingview_cbf65"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
+      target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+    new TradingView.widget(
+      {
+        "width": 1000,
+        "height": 300,
+        "symbol": "NASDAQ:AAPL",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "Light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_cbf65"
+      }
+    );
+  </script>
+</div>
+  `;
+  $('tradingDOM').html(domString);
+};
+
 
 const formForTask = () => {
   const domString = `
@@ -20,6 +54,24 @@ const formForTask = () => {
   `;
   $('#aritlces-add-container-form').show();
   $('#aritlces-add-container-form').html(domString);
+  return domString;
+};
+
+const articlesHeader = () => {
+  const domString = `
+  <div class="headerArticleWrapper" style="width: 40rem">
+        <div class="card imgH3" style="width: 40rem">
+          <img class="artImg" src="https://vignette.wikia.nocookie.net/halofanon/images/c/c9/BBC_News.png/revision/latest?cb=20101105020913
+ https://vignette.wikia.nocookie.net/halofanon/images/c/c9/BBC_News.png/revision/latest?cb=20101105020913
+ "
+            alt="Card image cap" style="width: 10rem">
+          <h3>From News, Videos and Post Malone updates. Stay Informed!
+          </h3>
+          <button id="addArtButt" type="button" class="btn btn-primary">Add</button>
+        </div>
+       </div>
+  `;
+  // $('#newArticlesHeaderDOM').html(domString);
   return domString;
 };
 
@@ -39,6 +91,8 @@ const printArt = (dataArray) => {
     `;
   });
   $('#articles-container').html(domString);
+  $('#newArticlesHeaderDOM').html(articlesHeader());
+  trading();
 };
 
 const printArtSecond = () => {
@@ -217,4 +271,5 @@ const getStockApi = () => {
     });
 };
 
-export default { printArtSecond, getStockApi };
+
+export default { printArtSecond, getStockApi, printArt };
