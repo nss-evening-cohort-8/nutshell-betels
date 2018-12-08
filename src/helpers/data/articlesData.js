@@ -1,3 +1,5 @@
+// Author: Wayne Collier
+// Purpose: calling data from firebase, functions to CRUD, and API call
 import axios from 'axios';
 
 import apiKeys from '../../../db/apiKeys';
