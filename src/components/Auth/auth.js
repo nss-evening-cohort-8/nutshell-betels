@@ -8,12 +8,12 @@ import './auth.scss';
 
 const loginButton = () => {
   const domString = `
-  <div class="page-container" class="text-center">
-  <img class="bg-img" src="${backgroundImage}" alt="background-Image" />
-      <div class="login-box card shadow rounded">
-        <div class="card-header bg-transparent display-4 text-center">Welcome To Betels Group
+  <div class="page-container d-flex justify-content-center align-items-center position-relative text-center">
+  <img class="bg-img w-100 vh-100" src="${backgroundImage}" alt="background-Image" />
+      <div class="login-box bg-transparent position-absolute">
+        <div class="bg-transparent text-light display-3 text-center">Welcome To Betels Group
         </div>
-        <div class="card-body text-info">
+        <div class="text-info mt-3">
           <a href="#" id="google-auth"><img src="${googleImage}" style="max-width: 20rem;" ></a>
         </div>
       </div>
