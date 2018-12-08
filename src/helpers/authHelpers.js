@@ -1,8 +1,21 @@
+/* eslint-disable import/no-cycle */
+
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import $ from 'jquery';
+import weatherStuff from '../components/Weather/weather';
+import printArt2 from '../components/Articles/articles';
+import loadEvents from '../components/Events/events';
+import initializeMessagesPage from '../components/Messages/messages';
 
-const checkLoginStatus = (initializeData) => {
+const initializeData = () => {
+  weatherStuff.initializeWeather();
+  printArt2.printArtSecond();
+  loadEvents.initializeEventsPage();
+  initializeMessagesPage();
+};
+
+const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       $('#auth').fadeOut(1000);
