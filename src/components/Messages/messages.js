@@ -9,13 +9,10 @@ const timestampFunction = () => moment().format('YYYY-MM-DD h:mm:ss a');
 
 const messageSection = (messageArray) => {
   let domString = '';
-  domString += `<div class="card rounded shadow w-100">
+  domString += `<div class="card w-100">
       <div class="class-header">
-      <h5 class="text-center bg-dark text-light p-2">Messages</h5>
+      <h5 class="text-center text-light p-2" style="background-color:#b2dfdb;">Messages</h5>
       </div>`;
-  if (messageArray.length > 20) {
-    messageArray.shift(messageArray.length - 20, messageArray.length);
-  }
   messageArray.forEach((messages) => {
     // const userUid = firebase.auth().currentUser;
     domString += `
@@ -43,10 +40,15 @@ const messageSection = (messageArray) => {
   $('#messages-container').html(domString);
 };
 
+const getFocus = () => {
+  $('#msgInput').focus();
+};
+
 const getMessages = () => {
   messagesData.getAllMessages()
     .then((messageArray) => {
       messageSection(messageArray);
+      getFocus(); // Keeps the focus always on Input fiels
     })
     .catch((error) => {
       console.error(error);
@@ -76,6 +78,7 @@ const addNewMessage = () => {
       console.error('error', error);
     });
 };
+
 
 // ----------------- DELETING MESSAGE ------------------------
 
