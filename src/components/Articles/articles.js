@@ -69,10 +69,10 @@ const articlesHeader = () => {
           </h3>
           <button id="addArtButt" type="button" class="btn btn-primary">Add</button>
         </div>
-        
-      </div>
+       </div>
   `;
-  $('#newArticlesHeaderDOM').html(domString);
+  // $('#newArticlesHeaderDOM').html(domString);
+  return domString;
 };
 
 const printArt = (dataArray) => {
@@ -91,7 +91,7 @@ const printArt = (dataArray) => {
     `;
   });
   $('#articles-container').html(domString);
-  articlesHeader();
+  $('#newArticlesHeaderDOM').html(articlesHeader());
   trading();
 };
 
@@ -272,4 +272,4 @@ const getStockApi = () => {
 };
 
 
-export default { printArtSecond, getStockApi };
+export default { printArtSecond, getStockApi, printArt };

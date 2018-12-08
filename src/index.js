@@ -22,7 +22,8 @@ const initializeApp = () => {
   checkLoginStatus2.checkLoginStatus(weatherStuff.initializeWeather);
   createNavbar();
   checkLoginStatus2.checkLoginStatus(initializeMessagesPage);
-  checkLoginStatus2.checkLoginStatus(printArt2.printArt);
+  checkLoginStatus2.checkLoginStatus(printArt2.printArtSecond);
+  // printArt2.printArt();
   checkLoginStatus2.checkLoginStatus(printArt2.getStockApi);
   checkLoginStatus2.checkLoginStatus(loadEvents.initializeEventsPage);
 };
