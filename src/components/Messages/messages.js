@@ -28,8 +28,8 @@ const messageSection = (messageArray) => {
           <p class="mssg flex-item w-100 text-primary">${messages.message}</p>
         </div>
         <div class="w-25 flex-item test">
-          <button type="submit" class="editt-btn btn btn-light m-1" data-edit-id=${messages.id}><i class="fas fa-edit" style="font-size: 20px"; data-edit-id=${messages.id}></i></button>
-          <button type="submit" class="del-btn btn btn-light m-1" data-delete-id=${messages.id}><i class="fas fa-trash-alt" style="font-size: 20px" ;data-delete-id=${messages.id}></i></button>
+          <button type="submit" class="editt-btn btn btn-light m-1" data-edit-id="${messages.id}"><i class="fas fa-edit" style="font-size: 20px;"></i></button>
+          <button type="submit" class="del-btn btn btn-light m-1" data-delete-id="${messages.id}"><i class="fas fa-trash-alt" style="font-size: 20px;"></i></button>
         </div>
       </div>
       <hr>
@@ -123,6 +123,7 @@ $('body').on('keyup', '.inputEditedText', (e) => {
   if (e.keyCode === 13) {
     const editedText = e.target.value;
     const edittId = e.target.dataset.inputId;
+    console.log(edittId);
     messagesData.editMessageAxios(gettingMessageObjectFromEdit(editedText), edittId)
       .then(() => {
         getMessages();
@@ -132,11 +133,11 @@ $('body').on('keyup', '.inputEditedText', (e) => {
 
 
 const editMessage = (e) => {
-  e.preventDefault();
-  const messageIdToEdit = e.target.dataset.editId;
+  e.preventDefault(); console.log(e.target);
+  const messageIdToEdit = $(e.target).closest('.editt-btn').attr('data-edit-id'); console.log(messageIdToEdit);
   const messageToEdit = $(e.target).closest('.test').siblings('.mo')[0];
   const divHtml = $(e.target).closest('.test').siblings('.mo')[0].innerText;
-  const editableText = `<input type="text" data-input-id=${messageIdToEdit}" class="inputEditedText border border-warning w-100 p-2 mx-3" style="background-color:#fff9c4;" id="editedWords" value="${divHtml}"/>`;
+  const editableText = `<input type="text" data-input-id="${messageIdToEdit}" class="inputEditedText border border-warning w-100 p-2 mx-3" style="background-color:#fff9c4;" id="editedWords" value="${divHtml}"/>`;
   $(messageToEdit).replaceWith(editableText);
 };
 
