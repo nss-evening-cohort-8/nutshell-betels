@@ -20,6 +20,7 @@ const getCurrentLocation = uid => new Promise((resolve, reject) => {
       currentLocationsArray.forEach((location) => {
         if (location.isCurrent === true) {
           resolve(location);
+          console.log(location);
         }
       });
     })
