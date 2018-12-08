@@ -8,7 +8,7 @@ import './auth.scss';
 
 const loginButton = () => {
   const domString = `
-  <div class="page-container d-flex justify-content-center align-items-center position-relative text-center">
+  <div class="page-container m-0 d-flex justify-content-center align-items-center position-relative text-center">
   <img class="bg-img w-100" src="${backgroundImage}" alt="background-Image" />
       <div class="login-box bg-transparent position-absolute">
         <div class="bg-transparent text-light display-3 text-center">Welcome To Betels Group

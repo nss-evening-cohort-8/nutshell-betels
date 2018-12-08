@@ -10,9 +10,9 @@ const checkLoginStatus = (initializeData) => {
       $('#content-wrapper').fadeIn(1000);
       initializeData();
     } else {
+      $('#content-wrapper').fadeOut(1000);
+      $('#nav').fadeOut(1000);
       $('#auth').fadeIn(1000);
-      $('#nav').hide();
-      $('#content-wrapper').hide();
     }
   });
 };

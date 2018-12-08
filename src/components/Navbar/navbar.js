@@ -7,9 +7,9 @@ const navbarEvents = () => {
   $('.nav-link').on('click', (e) => {
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
-        $('#auth').fadeIn(1000);
         $('#nav').fadeOut(1000);
         $('#content-wrapper').fadeOut(1000);
+        $('#auth').fadeIn(1000);
       }).catch((err) => {
         console.log('You are stil logged in', err);
       });
