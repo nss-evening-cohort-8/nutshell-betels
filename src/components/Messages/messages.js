@@ -79,11 +79,9 @@ const addNewMessage = () => {
     });
 };
 
-
 // ----------------- DELETING MESSAGE ------------------------
 
 const deleteMessage = (e) => {
-  // const idToDelete = e.target.dataset.deleteId; // Grabs the id from Delete button
   const idToDelete = $(e.target).closest('.del-btn').data('delete-id');
   console.log(idToDelete);
   messagesData.deleteMessage(idToDelete) // Delete from Firebase
@@ -95,7 +93,6 @@ const deleteMessage = (e) => {
     });
 };
 
-
 $('body').on('keyup', '#msgInput', (e) => {
   e.preventDefault();
   if (e.keyCode === 13) {
@@ -106,7 +103,6 @@ $('body').on('keyup', '#msgInput', (e) => {
 $('body').on('click', '.del-btn', deleteMessage); // On body when click on delete button then run deleteMessage function
 // $('body').on('click', '.edit-btn', editMessage); // On body when click on delete button then
 //  run editeMessage function
-
 
 // ----------------- Editing MESSAGE ------------------------
 
@@ -121,7 +117,6 @@ const gettingMessageObjectFromEdit = (message) => {
   return editedMessage;
 };
 
-
 $('body').on('keyup', '.inputEditedText', (e) => {
   if (e.keyCode === 13) {
     const editedText = e.target.value;
@@ -134,7 +129,6 @@ $('body').on('keyup', '.inputEditedText', (e) => {
   }
 });
 
-
 const editMessage = (e) => {
   e.preventDefault(); console.log(e.target);
   const messageIdToEdit = $(e.target).closest('.editt-btn').attr('data-edit-id'); console.log(messageIdToEdit);
@@ -145,8 +139,6 @@ const editMessage = (e) => {
 };
 
 $('body').on('click', '.editt-btn', editMessage);
-
-// $('body').on('click', '.editt-btn', editMessage, console.log('hi'));
 
 const initializeMessagesPage = () => {
   getMessages();
