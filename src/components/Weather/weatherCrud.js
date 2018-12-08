@@ -8,13 +8,13 @@ import locationsData from '../../helpers/data/locationsData';
 import weatherCrap from './weather';
 
 const gettingLocationFromInputFields = () => {
-  const location = {
+  const locationObject = {
     zipcode: $('#zipCodeInputField').val(),
     city_name: $('#cityInputField').val(),
     isCurrent: false,
     uid: authHelpers.getCurrentUid(),
   };
-  return location;
+  return locationObject;
 };
 
 const addNewLocation = () => {
@@ -61,6 +61,29 @@ const setAllNotCurrent = (e) => {
     });
 };
 
+const gettingLocationFromEmptyBucket = () => {
+  const locationObject = {
+    zipcode: $('#setZip').val(),
+    city_name: $('#setCity').val(),
+    isCurrent: true,
+    uid: authHelpers.getCurrentUid(),
+  };
+  return locationObject;
+};
+
+const emptyBucketSetCurrentLocation = () => {
+  const setLocation = gettingLocationFromEmptyBucket();
+  locationsData.addNewLocationAxios(setLocation)
+    .then(() => {
+      weatherCrap.initializeWeather();
+      $('#empty-bucket').hide();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
+$('body').on('click', '.set-location', emptyBucketSetCurrentLocation);
 $('body').on('click', '.add-location', addNewLocation);
 $('body').on('click', '.location-trash', deleteLocation);
 
