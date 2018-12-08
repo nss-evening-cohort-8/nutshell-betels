@@ -9,7 +9,7 @@ import locationsData from '../../helpers/data/locationsData';
 import weatherData from '../../helpers/data/weatherData';
 import dropdownStuff from './dropdown';
 
-const weatherSection = (currentLocation) => {
+const printTheWeather = (currentLocation) => {
   const domString = `
   <div class="card" id="weatherCard" style="width: 25rem;">
     <div class="card-body d-inline-flex justify-content-between">
@@ -47,14 +47,29 @@ const weatherSection = (currentLocation) => {
   `;
   $('#weather').html(domString);
   dropdownStuff.getLocationsForDropdown();
+  $('#empty-bucket').hide();
 };
 
-const weatherPage = () => {
+const emptyBucket = () => {
+  const domString = `
+  <div class="card" style="width: 25rem;">
+    <h5>Enter zipcode and city to set your current location</h5>
+    <div class="card-body d-inline-flex justify-content-between">
+      <input id="setZip" class="form-control mr-sm-2" type="enterZip" placeholder="Zip code" aria-label="Enter zip code">
+      <input id="setCity" class="form-control mr-sm-2" type="enterCity" placeholder="City" aria-label="Enter city">
+      <button class="btn btn-primary add-location">Set Current Location</button>
+    </div>
+  </div>
+  `;
+  $('#empty-bucket').html(domString);
+};
+
+const getTheWeather = () => {
   const uid = authHelpers.getCurrentUid();
   locationsData.getCurrentLocation(uid)
     .then(currentLocation => weatherData.weatherGetter(currentLocation.zipcode))
     .then((currentLocation) => {
-      weatherSection(currentLocation);
+      printTheWeather(currentLocation);
     })
     .catch((error) => {
       console.error('error in getting location', error);
@@ -62,10 +77,10 @@ const weatherPage = () => {
 };
 
 const initializeWeather = () => {
-  weatherPage();
+  getTheWeather();
 };
 
 export default {
   initializeWeather,
-  weatherSection,
+  emptyBucket,
 };
