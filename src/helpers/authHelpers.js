@@ -1,3 +1,5 @@
+/* eslint-disable import/no-cycle */
+
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import $ from 'jquery';

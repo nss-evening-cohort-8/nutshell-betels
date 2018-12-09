@@ -9,37 +9,6 @@ import apiKeys from '../../../db/apiKeys';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const trading = () => {
-  const domString = `
-  <div class="tradingview-widget-container">
-  <div id="tradingview_cbf65"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
-      target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
-  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-  <script type="text/javascript">
-    new TradingView.widget(
-      {
-        "width": 1000,
-        "height": 300,
-        "symbol": "NASDAQ:AAPL",
-        "interval": "D",
-        "timezone": "Etc/UTC",
-        "theme": "Light",
-        "style": "1",
-        "locale": "en",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "tradingview_cbf65"
-      }
-    );
-  </script>
-</div>
-  `;
-  $('tradingDOM').html(domString);
-};
-
-
 const formForTask = () => {
   const domString = `
   <div class="form-row mx-auto" style="width: 40rem">
@@ -92,7 +61,6 @@ const printArt = (dataArray) => {
   });
   $('#articles-container').html(domString);
   $('#newArticlesHeaderDOM').html(articlesHeader());
-  trading();
 };
 
 const printArtSecond = () => {

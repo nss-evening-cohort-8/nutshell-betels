@@ -3,25 +3,25 @@
     "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",
     "zipcode": 77001,
     "city_name": "Houston",
-    "isCurrent": true
+    "isCurrent": false
   },
   "location2": {
     "uid": "PV9v02eIyiYya4dSm6mkuesgE0v1",
     "zipcode": 77001,
     "city_name": "Houston",
-    "isCurrent": true
+    "isCurrent": false
   },
   "location3": {
     "uid": "Yry3zWO094NFxBPfvn1tpnMv3El2",
     "zipcode": 77001,
     "city_name": "Houston",
-    "isCurrent": true
+    "isCurrent": false
 },
   "location4": {
     "uid": "Jq5StJVCPlWNN97Jf0tUes0wulA2",
     "zipcode": 77001,
     "city_name": "Houston",
-    "isCurrent": true
+    "isCurrent": false
 },
   "location5": {
     "uid": "PFGnI6RTqCaInYwKhUYzag8vrPF2",

@@ -14,7 +14,7 @@ const loginButton = () => {
         <div class="bg-transparent text-light display-3 text-center">Welcome To Betels Group
         </div>
         <div class="text-info mt-3">
-          <a href="#" id="google-auth"><img src="${googleImage}" style="max-width: 20rem;" ></a>
+          <a href="#" id="google-auth"><img src="${googleImage}" style="max-width: 20rem; height: 100%" ></a>
         </div>
       </div>
   </div>
