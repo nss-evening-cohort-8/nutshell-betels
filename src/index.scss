@@ -11,5 +11,32 @@ body {
   padding-right: 10px;
 }
 
+#content-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
 
+#events{
+  margin-left: 560px !important;
+  margin-top: -150px !important;
+}
 
+#weatherSection{
+  margin-top: 25px;
+}
+
+#lastArticlesDiv{
+  margin-left: -170px;
+  margin-top: -280px;
+}
+.w-200{
+  margin-left: 10px;
+
+}
+
+#messageCard{
+  width: 600px !important;
+  margin-left: 550px;
+  margin-top: -500px;
+  margin-bottom: 25px;
+}
