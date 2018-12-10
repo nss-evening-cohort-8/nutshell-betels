@@ -9,7 +9,7 @@ const timestampFunction = () => moment().format('YYYY-MM-DD h:mm:ss a');
 
 const messageSection = (messageArray) => {
   let domString = '';
-  domString += `<div class="card w-100">
+  domString += `<div id="messageCard" class="card w-100">
       <div class="class-header">
       <h5 class="text-center text-light p-2" style="background-color:#b2dfdb;">Messages</h5>
       </div>`;
